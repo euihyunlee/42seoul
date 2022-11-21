@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:21:54 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/21 16:59:20 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:08:18 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int	*tmp;
+	unsigned char	*tmp;
 
 	tmp = b;
 	while (len-- > 0)
