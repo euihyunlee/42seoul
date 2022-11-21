@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-sources = ft_isalpha.c
+sources = ft_isalpha.c ft_isdigit.c
 objects = $(sources:.c=.o)
 NAME = libft.a
 
