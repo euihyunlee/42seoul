@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:47:55 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/21 17:10:08 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:35:37 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*tmp;
-
-	tmp = s;
-	while (n-- > 0)
-		*tmp++ = 0;
-	return ;
+	ft_memset(s, 0, n);
 }
