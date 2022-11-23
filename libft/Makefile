@@ -27,3 +27,6 @@ fclean : clean
 .PHONY : clean
 clean :
 	rm -f $(objects)
+
+debug :
+	$(CC) $(CFLAGS) -g $^ -o debug
