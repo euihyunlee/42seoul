@@ -40,12 +40,12 @@
 
 ## Bonus Functions
 
-- [ ] lstnew
-- [ ] lstadd front
-- [ ] lstsize
-- [ ] lstlast
-- [ ] lstadd back
-- [ ] lstdelone
-- [ ] lstclear
-- [ ] lstiter
-- [ ] lstmap
+- [x] lstnew
+- [x] lstadd front
+- [x] lstsize
+- [x] lstlast
+- [x] lstadd back
+- [x] lstdelone
+- [x] lstclear
+- [x] lstiter
+- [x] lstmap
