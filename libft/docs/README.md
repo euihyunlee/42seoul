@@ -38,3 +38,14 @@
 - [x] putendl fd
 - [x] putnbr fd
 
+## Bonus Functions
+
+- [ ] lstnew
+- [ ] lstadd front
+- [ ] lstsize
+- [ ] lstlast
+- [ ] lstadd back
+- [ ] lstdelone
+- [ ] lstclear
+- [ ] lstiter
+- [ ] lstmap
