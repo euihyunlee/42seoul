@@ -38,7 +38,6 @@ $(objects) :
 
 .PHONY : bonus
 bonus :
-	sleep 1
 	make WITH_BONUS=1 all
 
 .PHONY : re
