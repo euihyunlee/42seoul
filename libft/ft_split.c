@@ -16,23 +16,23 @@ static void	free_arr(char **arr, unsigned int count);
 
 char	**ft_split(char const *s, char c)
 {
-	char				**arr;
 	static unsigned int	count;
-	size_t				len;
+	char const			*t;
 	char				*substr;
+	char				**arr;
 
 	while (*s && *s == c)
 		s++;
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	if (len == 0)
+	t = s;
+	while (*t && *t != c)
+		t++;
+	if (s == t)
 		return (ft_calloc(count + 1, sizeof(*arr)));
 	count++;
-	arr = ft_split(s + len, c);
+	arr = ft_split(t, c);
 	if (arr == NULL)
 		return (NULL);
-	substr = ft_substr(s, 0, len);
+	substr = ft_substr(s, 0, t - s);
 	if (substr == NULL)
 	{
 		free_arr(arr, count);
@@ -44,10 +44,12 @@ char	**ft_split(char const *s, char c)
 
 static void	free_arr(char **arr, unsigned int count)
 {
+	char	**tmp;
+
 	if (arr == NULL)
 		return ;
-	arr += count;
-	while (*arr)
-		free(*arr++);
+	tmp = arr + count;
+	while (*tmp)
+		free(*tmp++);
 	free(arr);
 }
