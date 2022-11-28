@@ -12,23 +12,17 @@
 
 #include "libft.h"
 
-static size_t	get_len(unsigned int n);
+static unsigned int	to_unsigned(int n);
+static size_t		get_len(int n);
 
 char	*ft_itoa(int n)
 {
 	unsigned int	un;
-	t_bool			is_negative;
 	size_t			len;
 	char			*nstr;
 
-	is_negative = n < 0;
-	if (is_negative)
-		un = n * -1;
-	else
-		un = n;
-	len = get_len(un);
-	if (is_negative)
-		len++;
+	un = to_unsigned(n);
+	len = get_len(n);
 	nstr = malloc((len + 1) * sizeof(*nstr));
 	if (nstr == NULL)
 		return (NULL);
@@ -38,19 +32,33 @@ char	*ft_itoa(int n)
 		nstr[len] = '0' + (un % 10);
 		un /= 10;
 	}
-	if (is_negative)
+	if (n < 0)
 		nstr[0] = '-';
 	return (nstr);
 }
 
-static size_t	get_len(unsigned int n)
+static unsigned int	to_unsigned(int n)
 {
-	size_t	len;
+	if (n < 0)
+		return ((unsigned int) n * -1);
+	return ((unsigned int) n);
+}
+
+static size_t	get_len(int n)
+{
+	size_t			len;
+	unsigned int	un;
 
 	len = 1;
-	while (n > 9)
+	un = n;
+	if (n < 0)
 	{
-		n /= 10;
+		un *= -1;
+		len++;
+	}
+	while (un > 9)
+	{
+		un /= 10;
 		len++;
 	}
 	return (len);
