@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 14:27:02 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/26 15:25:26 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/11/28 12:08:57 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	get_len(unsigned int n);
 char	*ft_itoa(int n)
 {
 	unsigned int	un;
-	bool			is_negative;
+	t_bool			is_negative;
 	size_t			len;
 	char			*nstr;
 

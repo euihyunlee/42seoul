@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 15:55:43 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/26 16:16:55 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/11/28 12:09:17 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	write_digits(unsigned int n, int fd);
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	un;
-	bool			is_negative;
+	t_bool			is_negative;
 
 	is_negative = n < 0;
 	if (is_negative)
