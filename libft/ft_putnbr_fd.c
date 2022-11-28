@@ -17,16 +17,13 @@ static void	write_digits(unsigned int n, int fd);
 void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	un;
-	t_bool			is_negative;
 
-	is_negative = n < 0;
-	if (is_negative)
+	un = n;
+	if (n < 0)
 	{
 		write(fd, "-", 1);
-		un = n * -1;
+		un *= -1;
 	}
-	else
-		un = n;
 	write_digits(un, fd);
 }
 
@@ -36,12 +33,12 @@ static void	write_digits(unsigned int n, int fd)
 
 	if (n < 10)
 	{
-		digit = '0' + n;
+		digit = n + '0';
 		write(fd, &digit, 1);
 		return ;
 	}
 	write_digits(n / 10, fd);
-	digit = '0' + (n % 10);
+	digit = (n % 10) + '0';
 	write(fd, &digit, 1);
 	return ;
 }
