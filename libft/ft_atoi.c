@@ -17,7 +17,7 @@ static int	ft_isspace(int c);
 int	ft_atoi(const char *str)
 {
 	int	sign;
-	int	num;
+	int	n;
 
 	while (ft_isspace(*str))
 		str++;
@@ -28,15 +28,15 @@ int	ft_atoi(const char *str)
 			sign *= -1;
 		str++;
 	}
-	num = 0;
+	n = 0;
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
 			break ;
-		num = num * 10 + (*str - '0');
+		n = n * 10 + (*str - '0');
 		str++;
 	}
-	return (sign * num);
+	return (sign * n);
 }
 
 static int	ft_isspace(int c)

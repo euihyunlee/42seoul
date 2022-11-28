@@ -19,22 +19,22 @@ char	*ft_itoa(int n)
 {
 	unsigned int	un;
 	size_t			len;
-	char			*nstr;
+	char			*str;
 
 	un = to_unsigned(n);
 	len = get_len(n);
-	nstr = malloc((len + 1) * sizeof(*nstr));
-	if (nstr == NULL)
+	str = malloc((len + 1) * sizeof(*str));
+	if (str == NULL)
 		return (NULL);
-	nstr[len] = '\0';
+	str[len] = '\0';
 	while (len-- > 0)
 	{
-		nstr[len] = '0' + (un % 10);
+		str[len] = (un % 10) + '0';
 		un /= 10;
 	}
 	if (n < 0)
-		nstr[0] = '-';
-	return (nstr);
+		str[0] = '-';
+	return (str);
 }
 
 static unsigned int	to_unsigned(int n)

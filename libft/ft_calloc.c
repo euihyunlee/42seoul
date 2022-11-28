@@ -14,10 +14,10 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*allocated;
+	void	*malloced;
 
-	allocated = malloc(count * size);
-	if (allocated == NULL)
+	malloced = malloc(count * size);
+	if (malloced == NULL)
 		return (NULL);
-	return (ft_memset(allocated, 0, count * size));
+	return (ft_memset(malloced, 0, count * size));
 }
