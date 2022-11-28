@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2022/11/26 21:32:44 by euihlee          ###   ########.fr        #
+#    Updated: 2022/11/28 11:52:46 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ sources_objects = $(sources:.c=.o)
 bonuses_objects = $(bonuses:.c=.o)
 
 ifdef WITH_BONUS
-	objects =  $(sources_objects) $(bonuses_objects)
+	objects = $(sources_objects) $(bonuses_objects)
 else
 	objects = $(sources_objects)
 endif
