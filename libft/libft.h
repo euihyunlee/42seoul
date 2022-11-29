@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:11:44 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/28 12:10:00 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:06:13 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-# define FALSE 0
-# define TRUE (!0)
-
-typedef int	t_bool;
 
 typedef struct s_list
 {
