@@ -16,15 +16,12 @@ static void	write_digits(unsigned int n, int fd);
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	un;
-
-	un = n;
 	if (n < 0)
 	{
+		n = 0 - n;
 		write(fd, "-", 1);
-		un *= -1;
 	}
-	write_digits(un, fd);
+	write_digits(n, fd);
 }
 
 static void	write_digits(unsigned int n, int fd)
