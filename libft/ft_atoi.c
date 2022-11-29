@@ -13,7 +13,7 @@
 #include "libft.h"
 
 static int	ft_isspace(int c);
-static long	tol(const char *str, int sign);
+static long	to_long(const char *str, int sign);
 
 int	ft_atoi(const char *str)
 {
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		str++;
 	}
-	return ((int) tol(str, sign));
+	return ((int) to_long(str, sign));
 }
 
 static int	ft_isspace(int c)
@@ -37,7 +37,7 @@ static int	ft_isspace(int c)
 		|| c == '\v' || c == '\f' || c == '\r');
 }
 
-static long	tol(const char *str, int sign)
+static long	to_long(const char *str, int sign)
 {
 	unsigned long	ul;
 	unsigned long	cutoff;
