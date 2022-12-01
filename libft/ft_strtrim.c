@@ -28,8 +28,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (trimmed == NULL)
 		return (NULL);
 	trimmed[len] = '\0';
-	if (len == 0)
-		return (trimmed);
 	while (len-- > 0)
 		trimmed[len] = s1[len];
 	return (trimmed);
