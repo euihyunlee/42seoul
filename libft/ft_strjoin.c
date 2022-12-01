@@ -14,17 +14,17 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	size;
+	size_t	len;
 	char	*joined;
 
-	size = ft_strlen(s1) + ft_strlen(s2);
-	joined = malloc(size + 1);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	joined = malloc(len + 1);
 	if (joined == NULL)
 		return (NULL);
-	joined[size] = '\0';
+	joined[len] = '\0';
 	while (*s1)
 		*joined++ = *s1++;
 	while (*s2)
 		*joined++ = *s2++;
-	return (joined - size);
+	return (joined - len);
 }
