@@ -12,54 +12,53 @@
 
 #include "libft.h"
 
+static long	to_long(const char *str, long cutoff, int remainder);
 static int	ft_isspace(int c);
-static long	to_long(const char *str, int sign);
 
 int	ft_atoi(const char *str)
 {
-	int	sign;
+	int		sign;
+	long	cutoff;
+	int		remainder;
+	long	number;
 
 	while (ft_isspace(*str))
 		str++;
 	sign = 1;
+	if (*str == '-')
+		sign = -1;
 	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
 		str++;
+	cutoff = __LONG_MAX__ / 10;
+	remainder = __LONG_MAX__ % 10;
+	if (sign < 0)
+		remainder++;
+	number = to_long(str, cutoff, remainder);
+	if (number >= 0)
+		return (sign * (int) number);
+	if (sign < 0)
+		return ((int)(-__LONG_MAX__ - 1L));
+	return ((int)(__LONG_MAX__));
+}
+
+static long	to_long(const char *str, long cutoff, int remainder)
+{
+	long	number;
+	int		digit;
+
+	number = 0;
+	while (ft_isdigit(*str))
+	{
+		digit = *str++ - '0';
+		if (number > cutoff || (number == cutoff && digit > remainder))
+			return (-1);
+		number = number * 10 + digit;
 	}
-	return ((int) to_long(str, sign));
+	return (number);
 }
 
 static int	ft_isspace(int c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
 		|| c == '\v' || c == '\f' || c == '\r');
-}
-
-static long	to_long(const char *str, int sign)
-{
-	unsigned long	ul;
-	unsigned long	cutoff;
-	int				cutlim;
-	int				digit;
-
-	cutoff = __LONG_MAX__ / 10;
-	cutlim = __LONG_MAX__ % 10;
-	if (sign < 0)
-		cutlim++;
-	ul = 0;
-	while (ft_isdigit(*str))
-	{
-		digit = *str - '0';
-		if (ul > cutoff || (ul == cutoff && digit > cutlim))
-		{
-			if (sign < 0)
-				return (-(__LONG_MAX__) - 1);
-			return (__LONG_MAX__);
-		}
-		ul = ul * 10 + digit;
-		str++;
-	}
-	return (sign * ul);
 }
