@@ -14,17 +14,17 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*s2;
-	size_t	len;
-	char	*trimmed;
+	char const	*s2;
+	size_t		len;
+	char		*trimmed;
 
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
-	s2 = (char *) s1 + ft_strlen(s1);
+	s2 = s1 + ft_strlen(s1);
 	while (s2 >= s1 && ft_strchr(set, *s2))
 		s2--;
 	len = s2 - s1 + 1;
-	trimmed = malloc(len + 1);
+	trimmed = malloc((len + 1) * sizeof(*trimmed));
 	if (trimmed == NULL)
 		return (NULL);
 	trimmed[len] = '\0';

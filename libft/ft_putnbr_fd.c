@@ -16,26 +16,27 @@ static void	write_digits(unsigned int n, int fd);
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	unsigned int	un;
+
+	un = (unsigned int) n;
 	if (n < 0)
 	{
-		n = 0 - n;
+		un = -un;
 		write(fd, "-", 1);
 	}
-	write_digits(n, fd);
+	write_digits(un, fd);
 }
 
 static void	write_digits(unsigned int n, int fd)
 {
 	char	digit;
 
+	digit = (n % 10) + '0';
 	if (n < 10)
 	{
-		digit = n + '0';
 		write(fd, &digit, 1);
 		return ;
 	}
 	write_digits(n / 10, fd);
-	digit = (n % 10) + '0';
 	write(fd, &digit, 1);
-	return ;
 }

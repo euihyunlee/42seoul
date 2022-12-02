@@ -29,7 +29,7 @@ char	*ft_itoa(int n)
 	}
 	un = (unsigned int) n;
 	if (n < 0)
-		un = 0 - un;
+		un = -un;
 	while (un != 0)
 	{
 		*--ptr = (un % 10) + '0';

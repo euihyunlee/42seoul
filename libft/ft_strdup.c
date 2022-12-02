@@ -17,7 +17,7 @@ char	*ft_strdup(const char *s1)
 	size_t	bytes;
 	char	*malloced;
 
-	bytes = (ft_strlen(s1) + 1) * sizeof(char);
+	bytes = (ft_strlen(s1) + 1) * sizeof(*s1);
 	malloced = malloc(bytes);
 	if (malloced == NULL)
 		return (NULL);

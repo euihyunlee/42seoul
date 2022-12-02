@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	ch;
-	char	*t;
+	char		ch;
+	const char	*t;
 
 	ch = (char) c;
 	if (ch == '\0')
@@ -24,8 +24,8 @@ char	*ft_strrchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == ch)
-			t = (char *) s;
+			t = s;
 		s++;
 	}
-	return (t);
+	return ((char *) t);
 }

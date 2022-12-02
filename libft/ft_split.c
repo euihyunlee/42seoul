@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static void	free_arr(char **arr, unsigned int count);
+static void	free_arr(char **arr, size_t start);
 
 char	**ft_split(char const *s, char c)
 {
-	static unsigned int	count;
-	char const			*t;
-	char				*substr;
-	char				**arr;
+	static size_t	count;
+	char const		*t;
+	char			*substr;
+	char			**arr;
 
 	while (*s && *s == c)
 		s++;
@@ -42,13 +42,11 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-static void	free_arr(char **arr, unsigned int count)
+static void	free_arr(char **arr, size_t start)
 {
 	char	**tmp;
 
-	if (arr == NULL)
-		return ;
-	tmp = arr + count;
+	tmp = arr + start;
 	while (*tmp)
 		free(*tmp++);
 	free(arr);
