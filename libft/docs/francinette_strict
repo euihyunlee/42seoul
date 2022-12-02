@@ -1,117 +1,0 @@
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                Welcome to Francinette, a 42 tester framework!                ║
-╚═══════════════════════╦══════════════════════════════╦═══════════════════════╝
-                        ║             libft            ║
-                        ╚══════════════════════════════╝
-⠋ Preparing framework⠙ Preparing framework⠹ Preparing framework✔ Preparing framework
-⠋ Executing: norminette⠙ Executing: norminette⠹ Executing: norminette⠸ Executing: norminette⠼ Executing: norminette⠴ Executing: norminette⠦ Executing: norminette✔ Executing: norminette
-⠋ Executing: make fclean all bonus⠙ Executing: make fclean all bonus⠹ Executing: make fclean all bonus⠸ Executing: make fclean all bonus⠼ Executing: make fclean all bonus⠴ Executing: make fclean all bonus⠦ Executing: make fclean all bonus⠧ Executing: make fclean all bonus⠇ Executing: make fclean all bonus⠏ Executing: make fclean all bonus⠋ Executing: make fclean all bonus⠙ Executing: make fclean all bonus⠹ Executing: make fclean all bonus⠸ Executing: make fclean all bonus⠼ Executing: make fclean all bonus⠴ Executing: make fclean all bonus⠦ Executing: make fclean all bonus⠧ Executing: make fclean all bonus⠇ Executing: make fclean all bonus⠏ Executing: make fclean all bonus⠋ Executing: make fclean all bonus⠙ Executing: make fclean all bonus⠹ Executing: make fclean all bonus⠸ Executing: make fclean all bonus⠼ Executing: make fclean all bonus⠴ Executing: make fclean all bonus⠦ Executing: make fclean all bonus⠧ Executing: make fclean all bonus⠇ Executing: make fclean all bonus⠏ Executing: make fclean all bonus✔ Executing: make fclean all bonus
-⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)⠇ Compiling tests: fsoares (my own)⠏ Compiling tests: fsoares (my own)⠋ Compiling tests: fsoares (my own)⠙ Compiling tests: fsoares (my own)⠹ Compiling tests: fsoares (my own)⠸ Compiling tests: fsoares (my own)⠼ Compiling tests: fsoares (my own)⠴ Compiling tests: fsoares (my own)⠦ Compiling tests: fsoares (my own)⠧ Compiling tests: fsoares (my own)✔ Compiling tests: fsoares (my own)
-ℹ Testing:
-ft_isalpha      : ⠋ft_isalpha      : ⠙ft_isalpha      : ⠹ft_isalpha      : ⠸ft_isalpha      : OK
-ft_isdigit      : ⠋ft_isdigit      : ⠙ft_isdigit      : ⠹ft_isdigit      : OK
-ft_isalnum      : ⠋ft_isalnum      : ⠙ft_isalnum      : ⠹ft_isalnum      : OK
-ft_isascii      : ⠋ft_isascii      : ⠙ft_isascii      : ⠹ft_isascii      : ⠸ft_isascii      : OK
-ft_isprint      : ⠋ft_isprint      : ⠙ft_isprint      : ⠹ft_isprint      : ⠸ft_isprint      : OK
-ft_strlen       : ⠋ft_strlen       : ⠙ft_strlen       : ⠹ft_strlen       : OK
-ft_memset       : ⠋ft_memset       : ⠙ft_memset       : ⠹ft_memset       : OK
-ft_bzero        : ⠋ft_bzero        : ⠙ft_bzero        : ⠹ft_bzero        : OK
-ft_memcpy       : ⠋ft_memcpy       : ⠙ft_memcpy       : ⠹ft_memcpy       : OK
-ft_memmove      : ⠋ft_memmove      : ⠙ft_memmove      : ⠹ft_memmove      : OK
-ft_strlcpy      : ⠋ft_strlcpy      : ⠙ft_strlcpy      : ⠹ft_strlcpy      : OK
-ft_strlcat      : ⠋ft_strlcat      : ⠙ft_strlcat      : ⠹ft_strlcat      : OK
-ft_toupper      : ⠋ft_toupper      : ⠙ft_toupper      : ⠹ft_toupper      : OK
-ft_tolower      : ⠋ft_tolower      : ⠙ft_tolower      : ⠹ft_tolower      : OK
-ft_strchr       : ⠋ft_strchr       : ⠙ft_strchr       : ⠹ft_strchr       : OK
-ft_strrchr      : ⠋ft_strrchr      : ⠙ft_strrchr      : ⠹ft_strrchr      : OK
-ft_strncmp      : ⠋ft_strncmp      : ⠙ft_strncmp      : ⠹ft_strncmp      : OK
-ft_memchr       : ⠋ft_memchr       : ⠙ft_memchr       : ⠹ft_memchr       : OK
-ft_memcmp       : ⠋ft_memcmp       : ⠙ft_memcmp       : ⠹ft_memcmp       : OK
-ft_strnstr      : ⠋ft_strnstr      : ⠙ft_strnstr      : ⠹ft_strnstr      : OK
-ft_atoi         : ⠋ft_atoi         : ⠙ft_atoi         : ⠹ft_atoi         : OK
-ft_calloc       : ⠋ft_calloc       : ⠙ft_calloc       : ⠹ft_calloc       : OK
-ft_strdup       : ⠋ft_strdup       : ⠙ft_strdup       : ⠹ft_strdup       : OK
-ft_substr       : ⠋ft_substr       : ⠙ft_substr       : ⠹ft_substr       : ⠸ft_substr       : OK
-ft_strjoin      : ⠋ft_strjoin      : ⠙ft_strjoin      : ⠹ft_strjoin      : OK
-ft_strtrim      : ⠋ft_strtrim      : ⠙ft_strtrim      : ⠹ft_strtrim      : KO
-ft_split        : ⠋ft_split        : ⠙ft_split        : ⠹ft_split        : ⠸ft_split        : ⠼ft_split        : ⠴ft_split        : ⠦ft_split        : 1.KO Abort
-ft_itoa         : ⠋ft_itoa         : ⠙ft_itoa         : ⠹ft_itoa         : ⠸ft_itoa         : OK
-ft_strmapi      : ⠋ft_strmapi      : ⠙ft_strmapi      : ⠹ft_strmapi      : OK
-ft_striteri     : ⠋ft_striteri     : ⠙ft_striteri     : ⠹ft_striteri     : OK
-ft_putchar_fd   : ⠋ft_putchar_fd   : ⠙ft_putchar_fd   : ⠹ft_putchar_fd   : OK
-ft_putstr_fd    : ⠋ft_putstr_fd    : ⠙ft_putstr_fd    : ⠹ft_putstr_fd    : OK
-ft_putendl_fd   : ⠋ft_putendl_fd   : ⠙ft_putendl_fd   : ⠹ft_putendl_fd   : OK
-ft_putnbr_fd    : ⠋ft_putnbr_fd    : ⠙ft_putnbr_fd    : ⠹ft_putnbr_fd    : ⠸ft_putnbr_fd    : OK
-ft_lstnew       : ⠋ft_lstnew       : ⠙ft_lstnew       : ⠹ft_lstnew       : OK
-ft_lstadd_front : ⠋ft_lstadd_front : ⠙ft_lstadd_front : ⠹ft_lstadd_front : OK
-ft_lstsize      : ⠋ft_lstsize      : ⠙ft_lstsize      : ⠹ft_lstsize      : OK
-ft_lstlast      : ⠋ft_lstlast      : ⠙ft_lstlast      : ⠹ft_lstlast      : OK
-ft_lstadd_back  : ⠋ft_lstadd_back  : ⠙ft_lstadd_back  : ⠹ft_lstadd_back  : OK
-ft_lstdelone    : ⠋ft_lstdelone    : ⠙ft_lstdelone    : ⠹ft_lstdelone    : ⠸ft_lstdelone    : OK
-ft_lstclear     : ⠋ft_lstclear     : ⠙ft_lstclear     : ⠹ft_lstclear     : OK
-ft_lstiter      : ⠋ft_lstiter      : ⠙ft_lstiter      : ⠹ft_lstiter      : OK
-ft_lstmap       : ⠋ft_lstmap       : ⠙ft_lstmap       : ⠹ft_lstmap       : KO
-
-⠋ Processing output⠙ Processing output⠹ Processing output⠸ Processing output⠼ Processing output⠴ Processing output⠦ Processing output⠧ Processing output⠇ Processing output⠏ Processing output⠋ Processing output⠙ Processing outputErrors found:
-For ft_strtrim, in /Users/euihlee/francinette/tests/libft/fsoares/test_strtrim.c:
-
-Error in test 1: ft_strtrim("", ""): expected 1 bytes, allocated 2 bytes
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strtrim ft_strtrim.c:27:10
-     in single_test_strtrim test_strtrim.c:7:2
-     in test_strtrim test_strtrim.c:12:6
-     in main test_strtrim.c:25:2
-
-Error in test 3: ft_strtrim("", "cdef"): expected 1 bytes, allocated 2 bytes
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_strtrim ft_strtrim.c:27:10
-     in single_test_strtrim test_strtrim.c:7:2
-     in test_strtrim test_strtrim.c:14:8
-     in main test_strtrim.c:25:2
-
-
-For ft_split, in /Users/euihlee/francinette/tests/libft/fsoares/test_split.c:
-
-Error in test 1: ft_split("hello!", 32:' '):
-malloc protection check for 2th malloc:
-     in _add_malloc malloc_mock.c:29:8
-     in malloc malloc_mock.c:75:10
-  -> in ft_substr ft_substr.c:25:9
-     in ft_split ft_split.c:35:9
-     in test_single_split test_split.c:72:2
-     in test_split test_split.c:79:6
-     in main test_split.c:101:2
-: Memory problems!
-     in sigabort utils.c:58:1
-     in free malloc_mock.c:83:1
-  -> in free_arr ft_split.c:53:1
-     in ft_split ft_split.c:39:3
-     in test_single_split test_split.c:72:2
-     in test_split test_split.c:79:6
-     in main test_split.c:101:2
-
-=================================================================
-==12009==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x603000001700 in thread 
-T0
-    #0 0x10e2d32c6 in wrap_free+0xa6 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x492c6)
-    #1 0x10accff65 in free malloc_mock.c:82
-    #2 0x10acd5d2d in free_arr ft_split.c:52
-    #3 0x10acd5bc5 in ft_split ft_split.c:38
-    #4 0x10accf48d in test_single_split test_split.c:72
-    #5 0x10accf54c in test_split test_split.c:79
-    #6 0x10accf80d in main test_split.c:101
-    #7 0x7fff6d716cc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
-
-...
-
-File too large. To see full report open: /Users/euihlee/francinette/temp/libft/fsoares/error.log
-
-
-Summary: 
-
-Failed tests: split, lstmap, strtrim
-
-Passed tests: isalpha, isdigit, isalnum, isascii, isprint, strlen, memset, bzero, memcpy, memmove, strlcpy, strlcat, toupper, tolower, strchr, strrchr, strncmp, memchr, memcmp, strnstr, atoi, calloc, strdup, substr, strjoin, strtrim, split, itoa, strmapi, striteri, putchar_fd, putstr_fd, putendl_fd, putnbr_fd, lstnew, lstadd_front, lstsize, lstlast, lstadd_back, lstdelone, lstclear, lstiter, lstmap
-
