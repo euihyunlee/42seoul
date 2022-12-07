@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-#define MAX_DIGITS 22
+#define MAX_DIGITS 32
 
 char	*ft_itoa(int n)
 {
