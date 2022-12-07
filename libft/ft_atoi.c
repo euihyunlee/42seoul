@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:04:26 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/29 20:44:34 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:28:58 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int	ft_atoi(const char *str)
 		sign = -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	cutoff = __LONG_MAX__ / 10;
-	remainder = __LONG_MAX__ % 10;
+	cutoff = LONG_MAX / 10;
+	remainder = LONG_MAX % 10;
 	if (sign < 0)
 		remainder++;
 	number = to_long(str, cutoff, remainder);
 	if (number >= 0)
 		return (sign * (int) number);
 	if (sign < 0)
-		return ((int)(-__LONG_MAX__ - 1L));
-	return ((int)(__LONG_MAX__));
+		return ((int) LONG_MIN);
+	return ((int) LONG_MAX);
 }
 
 static long	to_long(const char *str, long cutoff, int remainder)
