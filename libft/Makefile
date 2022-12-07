@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2022/11/28 11:52:46 by euihlee          ###   ########.fr        #
+#    Updated: 2022/12/07 10:44:04 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,11 @@ $(objects) :
 
 .PHONY : bonus
 bonus :
-	make WITH_BONUS=1 all
+	$(MAKE) WITH_BONUS=1 all
 
 .PHONY : re
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 .PHONY : fclean
 fclean : clean
