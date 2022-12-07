@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2022/12/07 10:44:04 by euihlee          ###   ########.fr        #
+#    Updated: 2022/12/07 17:34:33 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,6 @@ all : $(NAME)
 
 $(NAME) : $(objects)
 	ar -r $@ $^
-
-$(objects) : 
 
 .PHONY : bonus
 bonus :
