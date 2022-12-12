@@ -39,8 +39,11 @@ t_array	*append_array(t_array *array, char *buffer, ssize_t bytes)
 		return (NULL);
 	if (array->size > SSIZE_MAX - bytes)
 		return (NULL);
-	if (array->size + bytes > array->capacity && !resize_array(array))
-		return (NULL);
+	while (array->size + bytes > array->capacity)
+	{
+		if (!resize_array(array))
+			return (NULL);
+	}
 	tmp = array->data + array->size;
 	array->size += bytes;
 	while (bytes-- > 0)
@@ -100,11 +103,11 @@ t_bool	read_buffer_size(int fd, t_array *array)
 		array->eol = -1;
 		return (FALSE);
 	}
-	append_array(array, buffer, bytes);
-	if (bytes != BUFFER_SIZE)
+	if (bytes == 0)
 	{
 		array->eol = array->size - 1;
 		return (FALSE);
 	}
+	append_array(array, buffer, bytes);
 	return (TRUE);
 }

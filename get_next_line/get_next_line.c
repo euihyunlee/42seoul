@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 		;
 	if (next_line->eol < 0)
 		return (free_array(next_line));
-	if (next_line->eol < next_line->size)
+	if (next_line->eol + 1 < next_line->size)
 		cache(fd, table, next_line);
 	return (build_string(next_line));
 }
@@ -41,16 +41,17 @@ void	flush(int fd, t_tab **table, t_array *array)
 	while (*head)
 	{
 		tmp = *head;
-		if (tmp->fd == fd)
+		if (tmp->fd != fd)
 		{
-			append_array(array, tmp->array->data, tmp->array->size);
-			*head = tmp->next;
-			free(tmp->array->data);
-			free(tmp->array);
-			free(tmp);
-			return ;
+			head = &(tmp->next);
+			continue ;
 		}
-		head = &(tmp->next);
+		append_array(array, tmp->array->data, tmp->array->size);
+		*head = tmp->next;
+		free(tmp->array->data);
+		free(tmp->array);
+		free(tmp);
+		return ;
 	}
 }
 
@@ -59,15 +60,20 @@ void	cache(int fd, t_tab **table, t_array *array)
 	t_tab	*new_tab;
 	t_array	*new_array;
 	ssize_t	new_capacity;
+	ssize_t	eol;
 
-	new_capacity = array->size - array->eol - 1;
+	eol = array->eol + 1;
+	new_capacity = array->size - eol;
 	new_array = init_array(new_capacity);
 	if (new_array == NULL)
 		return ;
-	append_array(new_array, array->data + array->eol + 1, new_capacity);
+	append_array(new_array, array->data + eol, new_capacity);
 	new_tab = malloc(sizeof(*new_tab));
 	if (new_tab == NULL)
+	{
+		free_array(new_array);
 		return ;
+	}
 	new_tab->fd = fd;
 	new_tab->array = new_array;
 	new_tab->next = table[fd % BUCKETS];
@@ -77,20 +83,15 @@ void	cache(int fd, t_tab **table, t_array *array)
 char	*build_string(t_array *array)
 {
 	char	*next_line;
-	ssize_t	i;
+	ssize_t	eol;
 
-	if (array->eol == 0)
-		return (free_array(array));
-	next_line = malloc((array->eol + 1) * sizeof(*next_line));
+	eol = array->eol + 1;
+	next_line = malloc((eol + 1) * sizeof(*next_line));
 	if (next_line == NULL)
 		return (free_array(array));
-	next_line[array->eol] = '\0';
-	i = 0;
-	while (i < array->eol)
-	{
-		next_line[i] = array->data[i];
-		i++;
-	}
+	next_line[eol] = '\0';
+	while (--eol >= 0)
+		next_line[eol] = array->data[eol];
 	free_array(array);
 	return (next_line);
 }

@@ -18,11 +18,16 @@
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024
 # endif
 
-# define INIT_CAPACITY 512
-# define BUCKETS 256
+# if BUFFER_SIZE < 1024
+#  define INIT_CAPACITY 1024
+# else
+#  define INIT_CAPACITY BUFFER_SIZE
+# endif
+
+# define BUCKETS 128
 
 # define FALSE 0
 # define TRUE (!0)
