@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:36:43 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/12 13:48:34 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/12 13:54:01 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ typedef struct s_array
 	ssize_t	eol;
 }			t_array;
 
-typedef struct s_node
+typedef struct s_tab
 {
 	int				fd;
 	t_array			*array;
-	struct s_node	*next;
-}					t_node;
+	struct s_tab	*next;
+}					t_tab;
 
 char	*get_next_line(int fd);
-void	flush(int fd, t_node **table, t_array *array);
-void	cache(int fd, t_node **table, t_array *array);
+void	flush(int fd, t_tab **table, t_array *array);
+void	cache(int fd, t_tab **table, t_array *array);
 char	*build_string(t_array *array);
 void	*free_array(t_array *array);
 

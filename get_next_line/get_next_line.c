@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/12 13:49:18 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/12 13:54:14 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_node	*table[BUCKETS];
+	static t_tab	*table[BUCKETS];
 	t_array			*next_line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
@@ -32,10 +32,10 @@ char	*get_next_line(int fd)
 	return (build_string(next_line));
 }
 
-void	flush(int fd, t_node **table, t_array *array)
+void	flush(int fd, t_tab **table, t_array *array)
 {
-	t_node	**head;
-	t_node	*tmp;
+	t_tab	**head;
+	t_tab	*tmp;
 
 	head = table + (fd % BUCKETS);
 	while (*head)
@@ -54,9 +54,9 @@ void	flush(int fd, t_node **table, t_array *array)
 	}
 }
 
-void	cache(int fd, t_node **table, t_array *array)
+void	cache(int fd, t_tab **table, t_array *array)
 {
-	t_node	*new_node;
+	t_tab	*new_tab;
 	t_array	*new_array;
 	ssize_t	new_capacity;
 
@@ -65,13 +65,13 @@ void	cache(int fd, t_node **table, t_array *array)
 	if (new_array == NULL)
 		return ;
 	append_array(new_array, array->data + array->eol + 1, new_capacity);
-	new_node = malloc(sizeof(*new_node));
-	if (new_node == NULL)
+	new_tab = malloc(sizeof(*new_tab));
+	if (new_tab == NULL)
 		return ;
-	new_node->fd = fd;
-	new_node->array = new_array;
-	new_node->next = table[fd % BUCKETS];
-	table[fd % BUCKETS] = new_node;
+	new_tab->fd = fd;
+	new_tab->array = new_array;
+	new_tab->next = table[fd % BUCKETS];
+	table[fd % BUCKETS] = new_tab;
 }
 
 char	*build_string(t_array *array)
