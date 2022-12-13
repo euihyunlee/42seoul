@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:43:52 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 12:56:04 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 13:21:56 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_bool	seek_eol(t_arr *array)
 	{
 		if (array->data[offset] == '\n')
 		{
-			array->eol = offset;
+			array->eol = ++offset;
 			return (TRUE);
 		}
 		offset++;
@@ -105,7 +105,7 @@ t_bool	read_buffer_size(int fd, t_arr *array)
 	}
 	if (bytes == 0)
 	{
-		array->eol = array->size - 1;
+		array->eol = array->size;
 		return (FALSE);
 	}
 	append_array(array, buffer, bytes);
