@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 13:11:33 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:19:24 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	cache(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	*new_tab;
 	t_arr	*new_array;
-	ssize_t	new_capacity;
+	size_t	new_capacity;
 
 	new_capacity = array->size - array->eol;
 	new_array = init_arr(new_capacity);
@@ -86,7 +86,7 @@ char	*build_string(t_arr *array)
 	if (next_line == NULL)
 		return (free_array(array));
 	next_line[array->eol] = '\0';
-	while (--array->eol >= 0)
+	while (array->eol-- > 0)
 		next_line[array->eol] = array->data[array->eol];
 	free_array(array);
 	return (next_line);

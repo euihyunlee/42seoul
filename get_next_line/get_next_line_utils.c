@@ -6,13 +6,13 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:43:52 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 13:21:56 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 13:27:54 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_arr	*init_arr(ssize_t capacity)
+t_arr	*init_arr(size_t capacity)
 {
 	t_arr	*new;
 
@@ -31,13 +31,13 @@ t_arr	*init_arr(ssize_t capacity)
 	return (new);
 }
 
-t_arr	*append_array(t_arr *array, char *buffer, ssize_t bytes)
+t_arr	*append_array(t_arr *array, char *buffer, size_t bytes)
 {
 	char	*tmp;
 
 	if (bytes == 0)
 		return (NULL);
-	if (array->size > SSIZE_MAX - bytes)
+	if (array->size > SIZE_MAX - bytes)
 		return (NULL);
 	while (array->size + bytes > array->capacity)
 	{
@@ -54,9 +54,9 @@ t_arr	*append_array(t_arr *array, char *buffer, ssize_t bytes)
 t_arr	*resize_array(t_arr *array)
 {
 	char	*new;
-	ssize_t	i;
+	size_t	i;
 
-	if (array->capacity > SSIZE_MAX / 2)
+	if (array->capacity > SIZE_MAX / 2)
 		return (NULL);
 	array->capacity *= 2;
 	new = malloc(array->capacity * sizeof(*new));
@@ -75,7 +75,7 @@ t_arr	*resize_array(t_arr *array)
 
 t_bool	seek_eol(t_arr *array)
 {
-	ssize_t	offset;
+	size_t	offset;
 
 	offset = 0;
 	if (array->size > BUFFER_SIZE)
@@ -100,7 +100,7 @@ t_bool	read_buffer_size(int fd, t_arr *array)
 	bytes = read(fd, buffer, BUFFER_SIZE);
 	if (bytes < 0)
 	{
-		array->eol = -1;
+		array->eol = 0;
 		return (FALSE);
 	}
 	if (bytes == 0)
