@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 15:19:24 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:20:50 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	flush(int fd, t_tab **table, t_arr *array)
 		}
 		append_array(array, tmp->array->data, tmp->array->size);
 		*head = tmp->next;
-		free(tmp->array->data);
-		free(tmp->array);
+		free_array(tmp->array);
 		free(tmp);
 		return ;
 	}
