@@ -6,15 +6,15 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:43:52 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/12 13:44:29 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:56:04 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_array	*init_array(ssize_t capacity)
+t_arr	*init_arr(ssize_t capacity)
 {
-	t_array	*new;
+	t_arr	*new;
 
 	new = malloc(sizeof(*new));
 	if (new == NULL)
@@ -31,7 +31,7 @@ t_array	*init_array(ssize_t capacity)
 	return (new);
 }
 
-t_array	*append_array(t_array *array, char *buffer, ssize_t bytes)
+t_arr	*append_array(t_arr *array, char *buffer, ssize_t bytes)
 {
 	char	*tmp;
 
@@ -51,7 +51,7 @@ t_array	*append_array(t_array *array, char *buffer, ssize_t bytes)
 	return (array);
 }
 
-t_array	*resize_array(t_array *array)
+t_arr	*resize_array(t_arr *array)
 {
 	char	*new;
 	ssize_t	i;
@@ -73,7 +73,7 @@ t_array	*resize_array(t_array *array)
 	return (array);
 }
 
-t_bool	seek_eol(t_array *array)
+t_bool	seek_eol(t_arr *array)
 {
 	ssize_t	offset;
 
@@ -92,7 +92,7 @@ t_bool	seek_eol(t_array *array)
 	return (FALSE);
 }
 
-t_bool	read_buffer_size(int fd, t_array *array)
+t_bool	read_buffer_size(int fd, t_arr *array)
 {
 	char	buffer[BUFFER_SIZE];
 	ssize_t	bytes;

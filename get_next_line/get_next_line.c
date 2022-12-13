@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/12 13:54:14 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:55:43 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 char	*get_next_line(int fd)
 {
 	static t_tab	*table[BUCKETS];
-	t_array			*next_line;
+	t_arr			*next_line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	next_line = init_array(INIT_CAPACITY);
+	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
 		return (NULL);
 	flush(fd, table, next_line);
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	return (build_string(next_line));
 }
 
-void	flush(int fd, t_tab **table, t_array *array)
+void	flush(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	**head;
 	t_tab	*tmp;
@@ -55,16 +55,16 @@ void	flush(int fd, t_tab **table, t_array *array)
 	}
 }
 
-void	cache(int fd, t_tab **table, t_array *array)
+void	cache(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	*new_tab;
-	t_array	*new_array;
+	t_arr	*new_array;
 	ssize_t	new_capacity;
 	ssize_t	eol;
 
 	eol = array->eol + 1;
 	new_capacity = array->size - eol;
-	new_array = init_array(new_capacity);
+	new_array = init_arr(new_capacity);
 	if (new_array == NULL)
 		return ;
 	append_array(new_array, array->data + eol, new_capacity);
@@ -80,7 +80,7 @@ void	cache(int fd, t_tab **table, t_array *array)
 	table[fd % BUCKETS] = new_tab;
 }
 
-char	*build_string(t_array *array)
+char	*build_string(t_arr *array)
 {
 	char	*next_line;
 	ssize_t	eol;
@@ -96,7 +96,7 @@ char	*build_string(t_array *array)
 	return (next_line);
 }
 
-void	*free_array(t_array *array)
+void	*free_array(t_arr *array)
 {
 	free(array->data);
 	free(array);
