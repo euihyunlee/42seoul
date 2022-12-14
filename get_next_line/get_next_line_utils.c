@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:43:52 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 13:27:54 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:44:35 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,15 @@ t_bool	read_buffer_size(int fd, t_arr *array)
 	ssize_t	bytes;
 
 	bytes = read(fd, buffer, BUFFER_SIZE);
-	if (bytes < 0)
-	{
-		array->eol = 0;
-		return (FALSE);
-	}
 	if (bytes == 0)
 	{
 		array->eol = array->size;
 		return (FALSE);
 	}
-	append_array(array, buffer, bytes);
+	if (bytes < 0 || !append_array(array, buffer, bytes))
+	{
+		array->eol = 0;
+		return (FALSE);
+	}
 	return (TRUE);
 }

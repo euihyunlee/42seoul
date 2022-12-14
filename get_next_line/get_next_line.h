@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:36:43 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 13:28:10 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 15:45:23 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_tab
 }					t_tab;
 
 char	*get_next_line(int fd);
-void	flush(int fd, t_tab **table, t_arr *array);
-void	cache(int fd, t_tab **table, t_arr *array);
+t_arr	*flush(int fd, t_tab **table, t_arr *array);
+t_arr	*cache(int fd, t_tab **table, t_arr *array);
 char	*build_string(t_arr *array);
 void	*free_array(t_arr *array);
 

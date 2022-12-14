@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 15:20:50 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:03:50 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@ char	*get_next_line(int fd)
 	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
 		return (NULL);
-	flush(fd, table, next_line);
+	if (!flush(fd, table, next_line))
+		return (free_array(next_line));
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
 		;
 	if (next_line->eol < 1)
 		return (free_array(next_line));
-	if (next_line->eol < next_line->size)
-		cache(fd, table, next_line);
+	if (next_line->eol < next_line->size && !cache(fd, table, next_line))
+		return (free_array(next_line));
 	return (build_string(next_line));
 }
 
-void	flush(int fd, t_tab **table, t_arr *array)
+t_arr	*flush(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	**head;
 	t_tab	*tmp;
@@ -46,15 +47,17 @@ void	flush(int fd, t_tab **table, t_arr *array)
 			head = &(tmp->next);
 			continue ;
 		}
-		append_array(array, tmp->array->data, tmp->array->size);
+		if (!append_array(array, tmp->array->data, tmp->array->size))
+			return (NULL);
 		*head = tmp->next;
 		free_array(tmp->array);
 		free(tmp);
-		return ;
+		return (array);
 	}
+	return (array);
 }
 
-void	cache(int fd, t_tab **table, t_arr *array)
+t_arr	*cache(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	*new_tab;
 	t_arr	*new_array;
@@ -63,18 +66,23 @@ void	cache(int fd, t_tab **table, t_arr *array)
 	new_capacity = array->size - array->eol;
 	new_array = init_arr(new_capacity);
 	if (new_array == NULL)
-		return ;
-	append_array(new_array, array->data + array->eol, new_capacity);
+		return (NULL);
+	if (!append_array(new_array, array->data + array->eol, new_capacity))
+	{
+		free_array(new_array);
+		return (NULL);
+	}
 	new_tab = malloc(sizeof(*new_tab));
 	if (new_tab == NULL)
 	{
 		free_array(new_array);
-		return ;
+		return (NULL);
 	}
 	new_tab->fd = fd;
 	new_tab->array = new_array;
 	new_tab->next = table[fd % BUCKETS];
 	table[fd % BUCKETS] = new_tab;
+	return (array);
 }
 
 char	*build_string(t_arr *array)
