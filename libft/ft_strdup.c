@@ -21,6 +21,6 @@ char	*ft_strdup(const char *s1)
 	malloced = malloc(bytes);
 	if (malloced == NULL)
 		return (NULL);
-	ft_strlcpy(malloced, s1, bytes);
+	ft_memcpy(malloced, s1, bytes);
 	return (malloced);
 }
