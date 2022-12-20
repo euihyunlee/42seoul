@@ -36,7 +36,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Wall -Wextra -Werror -D BUFFER_SIZE=42 -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -fcolor-diagnostics"
+					"fragment" : " -Wall -Wextra -Werror -D BUFFER_SIZE=42 -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
 				},
 				{
 					"fragment" : "-std=gnu99"
@@ -89,18 +89,18 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "get_next_line.c",
+			"path" : "src/get_next_line.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "get_next_line_utils.c",
+			"path" : "src/get_next_line_utils.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "get_next_line.h",
+			"path" : "src/get_next_line.h",
 			"sourceGroupIndex" : 1
 		}
 	],
