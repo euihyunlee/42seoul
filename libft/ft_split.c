@@ -6,17 +6,22 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 12:07:33 by euihlee           #+#    #+#             */
-/*   Updated: 2022/11/26 12:50:09 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/20 15:46:54 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char		**split(char const *s, char c, size_t count);
 static void	free_arr(char **arr, size_t start);
 
 char	**ft_split(char const *s, char c)
 {
-	static size_t	count;
+	return (split(s, c, 0));
+}
+
+char	**split(char const *s, char c, size_t count)
+{
 	char const		*t;
 	char			*substr;
 	char			**arr;
@@ -29,7 +34,7 @@ char	**ft_split(char const *s, char c)
 	if (s == t)
 		return (ft_calloc(count + 1, sizeof(*arr)));
 	count++;
-	arr = ft_split(t, c);
+	arr = split(t, c, count);
 	if (arr == NULL)
 		return (NULL);
 	substr = ft_substr(s, 0, t - s);
