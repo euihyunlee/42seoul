@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/13 16:03:50 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/17 20:28:01 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
 	static t_tab	*table[BUCKETS];
 	t_arr			*next_line;
+	char			*string;
+	t_tab			**head;
+	t_tab			*tmp;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
+	{
+		head = table + (fd % BUCKETS);
+		while (*head)
+		{
+			tmp = *head;
+			if (tmp->fd != fd)
+			{
+				head = &(tmp->next);
+				continue ;
+			}
+			*head = tmp->next;
+			free_array(tmp->array);
+			free(tmp);
+			break ;
+		}
 		return (NULL);
+	}
 	if (!flush(fd, table, next_line))
 		return (free_array(next_line));
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
@@ -30,7 +49,27 @@ char	*get_next_line(int fd)
 		return (free_array(next_line));
 	if (next_line->eol < next_line->size && !cache(fd, table, next_line))
 		return (free_array(next_line));
-	return (build_string(next_line));
+	string = build_string(next_line);
+	if (string == NULL)
+	{
+		free_array(next_line);
+		head = table + (fd % BUCKETS);
+		while (*head)
+		{
+			tmp = *head;
+			if (tmp->fd != fd)
+			{
+				head = &(tmp->next);
+				continue ;
+			}
+			*head = tmp->next;
+			free_array(tmp->array);
+			free(tmp);
+			break ;
+		}
+		return (NULL);
+	}
+	return (string);
 }
 
 t_arr	*flush(int fd, t_tab **table, t_arr *array)
@@ -48,7 +87,12 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array)
 			continue ;
 		}
 		if (!append_array(array, tmp->array->data, tmp->array->size))
+		{
+			*head = tmp->next;
+			free_array(tmp->array);
+			free(tmp);
 			return (NULL);
+		}
 		*head = tmp->next;
 		free_array(tmp->array);
 		free(tmp);
@@ -91,7 +135,7 @@ char	*build_string(t_arr *array)
 
 	next_line = malloc((array->eol + 1) * sizeof(*next_line));
 	if (next_line == NULL)
-		return (free_array(array));
+		return (NULL);
 	next_line[array->eol] = '\0';
 	while (array->eol-- > 0)
 		next_line[array->eol] = array->data[array->eol];
