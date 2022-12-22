@@ -6,13 +6,13 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 12:07:33 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/20 15:46:54 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/22 21:55:43 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**split(char const *s, char c, size_t count);
+static char	**split(char const *s, char c, size_t count);
 static void	free_arr(char **arr, size_t start);
 
 char	**ft_split(char const *s, char c)
@@ -20,7 +20,7 @@ char	**ft_split(char const *s, char c)
 	return (split(s, c, 0));
 }
 
-char	**split(char const *s, char c, size_t count)
+static char	**split(char const *s, char c, size_t count)
 {
 	char const		*t;
 	char			*substr;
