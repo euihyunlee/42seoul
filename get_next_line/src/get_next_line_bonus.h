@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: euihlee <euihlee@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 16:36:43 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/17 19:37:38 by euihlee          ###   ########.fr       */
+/*   Created: 2022/12/22 19:49:20 by euihlee           #+#    #+#             */
+/*   Updated: 2022/12/22 19:49:21 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array);
 t_arr	*cache(int fd, t_tab **table, t_arr *array);
 char	*build_string(t_arr *array);
 void	*free_array(t_arr *array);
+void	*cleanup(t_tab **table, int fd);
 
 t_arr	*init_arr(size_t capacity);
 t_arr	*append_array(t_arr *array, char *buffer, size_t bytes);

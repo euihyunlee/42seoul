@@ -17,30 +17,12 @@ char	*get_next_line(int fd)
 	static t_tab	*table[BUCKETS];
 	t_arr			*next_line;
 	char			*string;
-	t_tab			**head;
-	t_tab			*tmp;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
-	{
-		head = table + (fd % BUCKETS);
-		while (*head)
-		{
-			tmp = *head;
-			if (tmp->fd != fd)
-			{
-				head = &(tmp->next);
-				continue ;
-			}
-			*head = tmp->next;
-			free_array(tmp->array);
-			free(tmp);
-			break ;
-		}
-		return (NULL);
-	}
+		return (cleanup(table, fd));
 	if (!flush(fd, table, next_line))
 		return (free_array(next_line));
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
@@ -53,21 +35,7 @@ char	*get_next_line(int fd)
 	if (string == NULL)
 	{
 		free_array(next_line);
-		head = table + (fd % BUCKETS);
-		while (*head)
-		{
-			tmp = *head;
-			if (tmp->fd != fd)
-			{
-				head = &(tmp->next);
-				continue ;
-			}
-			*head = tmp->next;
-			free_array(tmp->array);
-			free(tmp);
-			break ;
-		}
-		return (NULL);
+		return (cleanup(table, fd));
 	}
 	return (string);
 }
@@ -147,5 +115,27 @@ void	*free_array(t_arr *array)
 {
 	free(array->data);
 	free(array);
+	return (NULL);
+}
+
+void	*cleanup(t_tab **table, int fd)
+{
+	t_tab	**head;
+	t_tab	*tmp;
+
+	head = table + (fd % BUCKETS);
+	while (*head)
+	{
+		tmp = *head;
+		if (tmp->fd != fd)
+		{
+			head = &(tmp->next);
+			continue ;
+		}
+		*head = tmp->next;
+		free_array(tmp->array);
+		free(tmp);
+		break ;
+	}
 	return (NULL);
 }
