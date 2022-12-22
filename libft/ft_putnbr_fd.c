@@ -21,7 +21,7 @@ void	ft_putnbr_fd(int n, int fd)
 	un = (unsigned int) n;
 	if (n < 0)
 	{
-		un = -un;
+		un = 0u - un;
 		write(fd, "-", 1);
 	}
 	write_digits(un, fd);

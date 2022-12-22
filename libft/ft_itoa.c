@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 	len = get_len(n);
 	un = (unsigned int) n;
 	if (n < 0)
-		un = -un;
+		un = 0u - un;
 	str = malloc((len + 1) * sizeof(*str));
 	if (str == NULL)
 		return (NULL);
@@ -47,7 +47,7 @@ static size_t	get_len(int n)
 	un = (unsigned int) n;
 	if (n < 0)
 	{
-		un = -un;
+		un = 0u - un;
 		len++;
 	}
 	while (un > 9)
