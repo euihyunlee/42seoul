@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 19:49:06 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/22 19:49:13 by euihlee          ###   ########.fr       */
+/*   Created: 2022/12/22 20:45:42 by euihlee           #+#    #+#             */
+/*   Updated: 2022/12/22 20:45:47 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,42 @@ char	*get_next_line(int fd)
 		return (NULL);
 	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
-		return (cleanup(table, fd));
+	{
+		cleanup(fd, table);
+		return (NULL);
+	}
 	if (!flush(fd, table, next_line))
-		return (free_array(next_line));
+	{
+		// free_array(next_line);
+		free(next_line->data);
+		free(next_line);
+		cleanup(fd, table);
+		return (NULL);
+	}
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
 		;
 	if (next_line->eol < 1)
-		return (free_array(next_line));
+	{
+		// free_array(next_line);
+		free(next_line->data);
+		free(next_line);
+		return (NULL);
+	}
 	if (next_line->eol < next_line->size && !cache(fd, table, next_line))
-		return (free_array(next_line));
+	{
+		// free_array(next_line);
+		free(next_line->data);
+		free(next_line);
+		return (NULL);
+	}
 	string = build_string(next_line);
 	if (string == NULL)
 	{
-		free_array(next_line);
-		return (cleanup(table, fd));
+		// free_array(next_line);
+		free(next_line->data);
+		free(next_line);
+		cleanup(fd, table);
+		return (NULL);
 	}
 	return (string);
 }
@@ -55,14 +77,11 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array)
 			continue ;
 		}
 		if (!append_array(array, tmp->array->data, tmp->array->size))
-		{
-			*head = tmp->next;
-			free_array(tmp->array);
-			free(tmp);
 			return (NULL);
-		}
 		*head = tmp->next;
-		free_array(tmp->array);
+		// free_array(tmp->array);
+		free(tmp->array->data);
+		free(tmp->array);
 		free(tmp);
 		return (array);
 	}
@@ -81,13 +100,17 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 		return (NULL);
 	if (!append_array(new_array, array->data + array->eol, new_capacity))
 	{
-		free_array(new_array);
+		// free_array(new_array);
+		free(new_array->data);
+		free(new_array);
 		return (NULL);
 	}
 	new_tab = malloc(sizeof(*new_tab));
 	if (new_tab == NULL)
 	{
-		free_array(new_array);
+		// free_array(new_array);
+		free(new_array->data);
+		free(new_array);
 		return (NULL);
 	}
 	new_tab->fd = fd;
@@ -107,18 +130,13 @@ char	*build_string(t_arr *array)
 	next_line[array->eol] = '\0';
 	while (array->eol-- > 0)
 		next_line[array->eol] = array->data[array->eol];
-	free_array(array);
+	// free_array(array);
+	free(array->data);
+	free(array);
 	return (next_line);
 }
 
-void	*free_array(t_arr *array)
-{
-	free(array->data);
-	free(array);
-	return (NULL);
-}
-
-void	*cleanup(t_tab **table, int fd)
+void	*cleanup(int fd, t_tab **table)
 {
 	t_tab	**head;
 	t_tab	*tmp;
@@ -133,7 +151,9 @@ void	*cleanup(t_tab **table, int fd)
 			continue ;
 		}
 		*head = tmp->next;
-		free_array(tmp->array);
+		// free_array(tmp->array);
+		free(tmp->array->data);
+		free(tmp->array);
 		free(tmp);
 		break ;
 	}

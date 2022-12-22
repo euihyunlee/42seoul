@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 19:49:20 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/22 19:49:21 by euihlee          ###   ########.fr       */
+/*   Created: 2022/12/22 20:46:06 by euihlee           #+#    #+#             */
+/*   Updated: 2022/12/22 20:46:16 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ char	*get_next_line(int fd);
 t_arr	*flush(int fd, t_tab **table, t_arr *array);
 t_arr	*cache(int fd, t_tab **table, t_arr *array);
 char	*build_string(t_arr *array);
-void	*free_array(t_arr *array);
-void	*cleanup(t_tab **table, int fd);
+void	*cleanup(int fd, t_tab **table);
 
 t_arr	*init_arr(size_t capacity);
 t_arr	*append_array(t_arr *array, char *buffer, size_t bytes);
