@@ -22,7 +22,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	next_line = init_array(INIT_CAPACITY);
 	if (next_line == NULL)
+	{
+		flush(fd, table, NULL);
 		return (NULL);
+	}
 	if (!flush(fd, table, next_line))
 	{
 		free_array(next_line);
