@@ -22,51 +22,37 @@ char	*get_next_line(int fd)
 		return (NULL);
 	next_line = init_arr(INIT_CAPACITY);
 	if (next_line == NULL)
-	{
-		cleanup(fd, table);
 		return (NULL);
-	}
 	if (!flush(fd, table, next_line))
 	{
-		// free_array(next_line);
-		free(next_line->data);
-		free(next_line);
-		cleanup(fd, table);
+		free_array(next_line);
 		return (NULL);
 	}
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
 		;
-	if (next_line->eol < 1)
+	if (next_line->eol < 1 || !cache(fd, table, next_line))
 	{
-		// free_array(next_line);
-		free(next_line->data);
-		free(next_line);
-		return (NULL);
-	}
-	if (next_line->eol < next_line->size && !cache(fd, table, next_line))
-	{
-		// free_array(next_line);
-		free(next_line->data);
-		free(next_line);
+		free_array(next_line);
 		return (NULL);
 	}
 	string = build_string(next_line);
 	if (string == NULL)
 	{
-		// free_array(next_line);
-		free(next_line->data);
-		free(next_line);
-		cleanup(fd, table);
+		flush(fd, table, NULL);
+		free_array(next_line);
 		return (NULL);
 	}
 	return (string);
 }
 
+// TODO: remove tmp
 t_arr	*flush(int fd, t_tab **table, t_arr *array)
 {
+	t_arr	*flag;
 	t_tab	**head;
 	t_tab	*tmp;
 
+	flag = array;
 	head = table + (fd % BUCKETS);
 	while (*head)
 	{
@@ -76,16 +62,14 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array)
 			head = &(tmp->next);
 			continue ;
 		}
-		if (!append_array(array, tmp->array->data, tmp->array->size))
-			return (NULL);
+		if (flag && !append_array(array, tmp->array->data, tmp->array->size))
+			flag = NULL;
 		*head = tmp->next;
-		// free_array(tmp->array);
-		free(tmp->array->data);
-		free(tmp->array);
+		free_array(tmp->array);
 		free(tmp);
-		return (array);
+		break ;
 	}
-	return (array);
+	return (flag);
 }
 
 t_arr	*cache(int fd, t_tab **table, t_arr *array)
@@ -95,22 +79,20 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 	size_t	new_capacity;
 
 	new_capacity = array->size - array->eol;
+	if (new_capacity == 0)
+		return (array);
 	new_array = init_arr(new_capacity);
 	if (new_array == NULL)
 		return (NULL);
 	if (!append_array(new_array, array->data + array->eol, new_capacity))
 	{
-		// free_array(new_array);
-		free(new_array->data);
-		free(new_array);
+		free_array(new_array);
 		return (NULL);
 	}
 	new_tab = malloc(sizeof(*new_tab));
 	if (new_tab == NULL)
 	{
-		// free_array(new_array);
-		free(new_array->data);
-		free(new_array);
+		free_array(new_array);
 		return (NULL);
 	}
 	new_tab->fd = fd;
@@ -130,32 +112,12 @@ char	*build_string(t_arr *array)
 	next_line[array->eol] = '\0';
 	while (array->eol-- > 0)
 		next_line[array->eol] = array->data[array->eol];
-	// free_array(array);
-	free(array->data);
-	free(array);
+	free_array(array);
 	return (next_line);
 }
 
-void	*cleanup(int fd, t_tab **table)
+void	free_array(t_arr *array)
 {
-	t_tab	**head;
-	t_tab	*tmp;
-
-	head = table + (fd % BUCKETS);
-	while (*head)
-	{
-		tmp = *head;
-		if (tmp->fd != fd)
-		{
-			head = &(tmp->next);
-			continue ;
-		}
-		*head = tmp->next;
-		// free_array(tmp->array);
-		free(tmp->array->data);
-		free(tmp->array);
-		free(tmp);
-		break ;
-	}
-	return (NULL);
+	free(array->data);
+	free(array);
 }
