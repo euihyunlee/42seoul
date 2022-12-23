@@ -65,10 +65,10 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array)
 			head = &(tmp->next);
 			continue ;
 		}
-		if (flag && !append_array(array, tmp->array->data, tmp->array->size))
+		if (flag && !append_array(array, tmp->data, tmp->size))
 			flag = NULL;
 		*head = tmp->next;
-		free_array(tmp->array);
+		free(tmp->data);
 		free(tmp);
 		break ;
 	}
@@ -78,30 +78,29 @@ t_arr	*flush(int fd, t_tab **table, t_arr *array)
 t_arr	*cache(int fd, t_tab **table, t_arr *array)
 {
 	t_tab	*new_tab;
-	t_arr	*new_array;
-	size_t	new_capacity;
+	char	*new_data;
+	size_t	new_size;
 
-	new_capacity = array->size - array->eol;
-	if (new_capacity == 0)
+	new_size = array->size - array->eol;
+	if (new_size == 0)
 		return (array);
-	new_array = init_array(new_capacity);
-	if (new_array == NULL)
+	new_data = malloc((new_size + 1) * sizeof(*new_data));
+	if (new_data == NULL)
 		return (NULL);
-	if (!append_array(new_array, array->data + array->eol, new_capacity))
-	{
-		free_array(new_array);
-		return (NULL);
-	}
 	new_tab = malloc(sizeof(*new_tab));
 	if (new_tab == NULL)
 	{
-		free_array(new_array);
+		free(new_data);
 		return (NULL);
 	}
 	new_tab->fd = fd;
-	new_tab->array = new_array;
+	new_tab->data = new_data;
+	new_tab->size = new_size;
 	new_tab->next = table[fd % BUCKETS];
 	table[fd % BUCKETS] = new_tab;
+	new_data[new_size] = '\0';
+	while (new_size-- > 0)
+		new_data[new_size] = array->data[array->eol + new_size];
 	return (array);
 }
 

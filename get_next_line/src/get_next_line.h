@@ -44,7 +44,8 @@ typedef struct s_arr
 typedef struct s_tab
 {
 	int				fd;
-	t_arr			*array;
+	char			*data;
+	size_t			size;
 	struct s_tab	*next;
 }					t_tab;
 
