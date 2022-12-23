@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	next_line = init_arr(INIT_CAPACITY);
+	next_line = init_array(INIT_CAPACITY);
 	if (next_line == NULL)
 		return (NULL);
 	if (!flush(fd, table, next_line))
@@ -81,7 +81,7 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 	new_capacity = array->size - array->eol;
 	if (new_capacity == 0)
 		return (array);
-	new_array = init_arr(new_capacity);
+	new_array = init_array(new_capacity);
 	if (new_array == NULL)
 		return (NULL);
 	if (!append_array(new_array, array->data + array->eol, new_capacity))

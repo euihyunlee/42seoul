@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-t_arr	*init_arr(size_t capacity)
+t_arr	*init_array(size_t capacity)
 {
 	t_arr	*new;
 

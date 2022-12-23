@@ -54,7 +54,7 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array);
 char	*build_string(t_arr *array);
 void	free_array(t_arr *array);
 
-t_arr	*init_arr(size_t capacity);
+t_arr	*init_array(size_t capacity);
 t_arr	*append_array(t_arr *array, char *buffer, size_t bytes);
 t_arr	*resize_array(t_arr *array);
 t_bool	seek_eol(t_arr *array);
