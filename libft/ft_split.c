@@ -6,25 +6,25 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 12:07:33 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/22 21:55:43 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/23 15:10:36 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**split(char const *s, char c, size_t count);
+static char	**split_recursively(char const *s, char c, size_t count);
 static void	free_arr(char **arr, size_t start);
 
 char	**ft_split(char const *s, char c)
 {
-	return (split(s, c, 0));
+	return (split_recursively(s, c, 0));
 }
 
-static char	**split(char const *s, char c, size_t count)
+static char	**split_recursively(char const *s, char c, size_t count)
 {
-	char const		*t;
-	char			*substr;
-	char			**arr;
+	char const	*t;
+	char		*substr;
+	char		**arr;
 
 	while (*s && *s == c)
 		s++;
@@ -34,7 +34,7 @@ static char	**split(char const *s, char c, size_t count)
 	if (s == t)
 		return (ft_calloc(count + 1, sizeof(*arr)));
 	count++;
-	arr = split(t, c, count);
+	arr = split_recursively(t, c, count);
 	if (arr == NULL)
 		return (NULL);
 	substr = ft_substr(s, 0, t - s);
