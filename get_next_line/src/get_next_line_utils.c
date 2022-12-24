@@ -33,7 +33,7 @@ t_arr	*init_array(size_t capacity)
 
 t_arr	*append_array(t_arr *array, char *buffer, size_t bytes)
 {
-	char	*tmp;
+	char	*end;
 
 	if (bytes == 0)
 		return (NULL);
@@ -44,10 +44,10 @@ t_arr	*append_array(t_arr *array, char *buffer, size_t bytes)
 		if (!resize_array(array))
 			return (NULL);
 	}
-	tmp = array->data + array->size;
+	end = array->data + array->size;
 	array->size += bytes;
 	while (bytes-- > 0)
-		*tmp++ = *buffer++;
+		*end++ = *buffer++;
 	return (array);
 }
 

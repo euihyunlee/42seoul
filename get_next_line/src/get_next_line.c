@@ -40,7 +40,6 @@ char	*get_next_line(int fd)
 	return (NULL);
 }
 
-// TODO: remove tmp
 t_arr	*flush(int fd, t_tab **table, t_arr *array)
 {
 	t_arr	*flag;
@@ -86,12 +85,12 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 		return (NULL);
 	}
 	new_tab->fd = fd;
-	new_tab->data = new_data;
 	new_tab->size = new_size;
-	new_tab->next = table[fd % BUCKETS];
-	table[fd % BUCKETS] = new_tab;
 	while (new_size-- > 0)
 		new_data[new_size] = array->data[array->eol + new_size];
+	new_tab->data = new_data;
+	new_tab->next = table[fd % BUCKETS];
+	table[fd % BUCKETS] = new_tab;
 	return (array);
 }
 
