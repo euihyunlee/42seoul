@@ -53,7 +53,7 @@ char	*get_next_line(int fd);
 t_arr	*flush(int fd, t_tab **table, t_arr *array);
 t_arr	*cache(int fd, t_tab **table, t_arr *array);
 char	*build_string(t_arr *array);
-void	free_array(t_arr *array);
+void	*free_array(t_arr *array);
 
 t_arr	*init_array(size_t capacity);
 t_arr	*append_array(t_arr *array, char *buffer, size_t bytes);

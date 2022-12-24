@@ -27,23 +27,16 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	if (!flush(fd, table, next_line))
-	{
-		free_array(next_line);
-		return (NULL);
-	}
+		return (free_array(next_line));
 	while (!seek_eol(next_line) && read_buffer_size(fd, next_line))
 		;
 	if (next_line->eol < 1 || !cache(fd, table, next_line))
-	{
-		free_array(next_line);
-		return (NULL);
-	}
+		return (free_array(next_line));
 	string = build_string(next_line);
 	if (string == NULL)
 	{
 		flush(fd, table, NULL);
-		free_array(next_line);
-		return (NULL);
+		return (free_array(next_line));
 	}
 	return (string);
 }
@@ -117,8 +110,12 @@ char	*build_string(t_arr *array)
 	return (next_line);
 }
 
-void	free_array(t_arr *array)
+void	*free_array(t_arr *array)
 {
+	if (array == NULL)
+		return (NULL);
 	free(array->data);
 	free(array);
+	return (NULL);
+
 }
