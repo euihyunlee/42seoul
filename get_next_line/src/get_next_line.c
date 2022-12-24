@@ -84,7 +84,7 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 	new_size = array->size - array->eol;
 	if (new_size == 0)
 		return (array);
-	new_data = malloc((new_size + 1) * sizeof(*new_data));
+	new_data = malloc(new_size * sizeof(*new_data));
 	if (new_data == NULL)
 		return (NULL);
 	new_tab = malloc(sizeof(*new_tab));
@@ -98,7 +98,6 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 	new_tab->size = new_size;
 	new_tab->next = table[fd % BUCKETS];
 	table[fd % BUCKETS] = new_tab;
-	new_data[new_size] = '\0';
 	while (new_size-- > 0)
 		new_data[new_size] = array->data[array->eol + new_size];
 	return (array);
