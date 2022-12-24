@@ -33,12 +33,11 @@ char	*get_next_line(int fd)
 	if (next_line->eol < 1 || !cache(fd, table, next_line))
 		return (free_array(next_line));
 	string = build_string(next_line);
-	if (string == NULL)
-	{
-		flush(fd, table, NULL);
-		return (free_array(next_line));
-	}
-	return (string);
+	free_array(next_line);
+	if (string)
+		return (string);
+	flush(fd, table, NULL);
+	return (NULL);
 }
 
 // TODO: remove tmp
@@ -106,7 +105,6 @@ char	*build_string(t_arr *array)
 	next_line[array->eol] = '\0';
 	while (array->eol-- > 0)
 		next_line[array->eol] = array->data[array->eol];
-	free_array(array);
 	return (next_line);
 }
 
@@ -117,5 +115,4 @@ void	*free_array(t_arr *array)
 	free(array->data);
 	free(array);
 	return (NULL);
-
 }
