@@ -43,24 +43,24 @@ char	*get_next_line(int fd)
 t_arr	*flush(int fd, t_tab **table, t_arr *array)
 {
 	t_arr	*flag;
-	t_tab	**head;
-	t_tab	*tmp;
+	t_tab	**nodeptr;
+	t_tab	*node;
 
 	flag = array;
-	head = table + (fd % BUCKETS);
-	while (*head)
+	nodeptr = table + (fd % BUCKETS);
+	while (*nodeptr)
 	{
-		tmp = *head;
-		if (tmp->fd != fd)
+		node = *nodeptr;
+		if (node->fd != fd)
 		{
-			head = &(tmp->next);
+			nodeptr = &(node->next);
 			continue ;
 		}
-		if (flag && !append_array(array, tmp->data, tmp->size))
+		if (flag && !append_array(array, node->data, node->size))
 			flag = NULL;
-		*head = tmp->next;
-		free(tmp->data);
-		free(tmp);
+		*nodeptr = node->next;
+		free(node->data);
+		free(node);
 		break ;
 	}
 	return (flag);
@@ -96,15 +96,15 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 
 char	*build_string(t_arr *array)
 {
-	char	*next_line;
+	char	*string;
 
-	next_line = malloc((array->eol + 1) * sizeof(*next_line));
-	if (next_line == NULL)
+	string = malloc((array->eol + 1) * sizeof(*string));
+	if (string == NULL)
 		return (NULL);
-	next_line[array->eol] = '\0';
+	string[array->eol] = '\0';
 	while (array->eol-- > 0)
-		next_line[array->eol] = array->data[array->eol];
-	return (next_line);
+		string[array->eol] = array->data[array->eol];
+	return (string);
 }
 
 void	*free_array(t_arr *array)

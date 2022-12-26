@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 16:36:43 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/24 16:59:13 by euihlee          ###   ########.fr       */
+/*   Created: 2022/12/26 14:09:22 by euihlee           #+#    #+#             */
+/*   Updated: 2022/12/26 14:11:42 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #  define INIT_CAPACITY BUFFER_SIZE
 # endif
 
-# define BUCKETS 128
+# define BUCKETS 256
 
 # define FALSE 0
 # define TRUE (!0)
@@ -35,10 +35,10 @@ typedef int	t_bool;
 
 typedef struct s_arr
 {
-	char	*data;
 	size_t	capacity;
 	size_t	size;
 	size_t	eol;
+	char	*data;
 }			t_arr;
 
 typedef struct s_tab

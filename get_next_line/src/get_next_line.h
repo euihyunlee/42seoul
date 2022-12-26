@@ -26,7 +26,7 @@
 #  define INIT_CAPACITY BUFFER_SIZE
 # endif
 
-# define BUCKETS 128
+# define BUCKETS 256
 
 # define FALSE 0
 # define TRUE (!0)
@@ -35,10 +35,10 @@ typedef int	t_bool;
 
 typedef struct s_arr
 {
-	char	*data;
 	size_t	capacity;
 	size_t	size;
 	size_t	eol;
+	char	*data;
 }			t_arr;
 
 typedef struct s_tab
