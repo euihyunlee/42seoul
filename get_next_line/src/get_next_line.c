@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:41:21 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/17 20:24:24 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/26 21:10:07 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,18 @@ t_arr	*cache(int fd, t_tab **table, t_arr *array)
 char	*build_string(t_arr *array)
 {
 	char	*string;
+	size_t	i;
 
 	string = malloc((array->eol + 1) * sizeof(*string));
 	if (string == NULL)
 		return (NULL);
 	string[array->eol] = '\0';
-	while (array->eol-- > 0)
-		string[array->eol] = array->data[array->eol];
+	i = 0;
+	while (i < array->eol)
+	{
+		string[i] = array->data[i];
+		i++;
+	}
 	return (string);
 }
 
