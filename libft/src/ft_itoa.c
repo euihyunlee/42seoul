@@ -6,54 +6,36 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 14:27:02 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/07 17:42:59 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/12/27 16:43:38 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		get_len(int n);
+#define MAX_DIGITS 22
 
 char	*ft_itoa(int n)
 {
-	size_t			len;
+	char			buffer[MAX_DIGITS];
+	char			*ptr;
 	unsigned int	un;
-	char			*str;
 
-	len = get_len(n);
+	ptr = buffer + MAX_DIGITS - 1;
+	*ptr = '\0';
+	if (n == 0)
+	{
+		*--ptr = '0';
+		return (ft_strdup(ptr));
+	}
 	un = (unsigned int) n;
 	if (n < 0)
 		un = 0u - un;
-	str = malloc((len + 1) * sizeof(*str));
-	if (str == NULL)
-		return (NULL);
-	str[len] = '\0';
-	while (len-- > 0)
+	while (un != 0)
 	{
-		str[len] = (un % 10) + '0';
+		*--ptr = (un % 10) + '0';
 		un /= 10;
 	}
 	if (n < 0)
-		str[0] = '-';
-	return (str);
-}
-
-static size_t	get_len(int n)
-{
-	size_t			len;
-	unsigned int	un;
-
-	len = 1;
-	un = (unsigned int) n;
-	if (n < 0)
-	{
-		un = 0u - un;
-		len++;
-	}
-	while (un > 9)
-	{
-		un /= 10;
-		len++;
-	}
-	return (len);
+		*--ptr = '-';
+	return (ft_strdup(ptr));
 }
