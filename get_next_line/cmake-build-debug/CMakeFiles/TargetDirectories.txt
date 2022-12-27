@@ -1,3 +1,0 @@
-/Users/ehlee/Documents/GitHub/42seoul/get_next_line/cmake-build-debug/CMakeFiles/get_next_line.dir
-/Users/ehlee/Documents/GitHub/42seoul/get_next_line/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/ehlee/Documents/GitHub/42seoul/get_next_line/cmake-build-debug/CMakeFiles/rebuild_cache.dir
