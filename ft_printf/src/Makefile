@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2022/12/22 13:39:39 by euihlee          ###   ########.fr        #
+#    Updated: 2022/12/29 19:19:13 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,27 +18,15 @@ ARFLAGS = -rcs
 NAME = libftprintf.a
 
 sources = \
+ft_printf.c     convert_specification.c     print_text.c    print_integer.c
 
-bonuses = \
-
-sources_objects = $(sources:.c=.o)
-bonuses_objects = $(bonuses:.c=.o)
-
-ifdef WITH_BONUS
-	objects = $(sources_objects) $(bonuses_objects)
-else
-	objects = $(sources_objects)
-endif
+objects = $(sources:.c=.o)
 
 .PHONY : all
 all : $(NAME)
 
 $(NAME) : $(objects)
 	$(AR) $(ARFLAGS) $@ $^
-
-.PHONY : bonus
-bonus :
-	$(MAKE) WITH_BONUS=1 all
 
 .PHONY : re
 re: fclean
@@ -50,4 +38,4 @@ fclean : clean
 
 .PHONY : clean
 clean :
-	rm -f $(sources_objects) $(bonuses_objects)
+	rm -f $(objects)
