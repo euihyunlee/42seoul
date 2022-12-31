@@ -17,14 +17,9 @@ int	print_char(char c)
 	return (write(STDOUT, &c, 1));
 }
 
-int	print_string(char *string)
+int	print_str(char *str)
 {
-	size_t	len;
-
-	if (string == NULL)
-		return (write(STDOUT, "(null)", 6));
-	len = 0;
-	while (string[len])
-		len++;
-	return (write(STDOUT, string, len));
+	if (str == NULL)
+		return (write(STDOUT, NULL_MSG, ft_strlen(NULL_MSG)));
+	return (write(STDOUT, str, ft_strlen(str)));
 }

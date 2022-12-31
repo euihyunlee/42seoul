@@ -19,23 +19,26 @@
 
 # define STDOUT 1
 
-# define FT_PRINTF_BUFSIZ 32
-
-typedef unsigned long long	t_ullong;
-
 int	ft_printf(const char *fstring, ...);
 
 int	convert_specification(const char *fstring, va_list ap);
 
+# define NULL_MSG "(null)"
+
 int	print_char(char c);
-int	print_string(char *string);
+int	print_str(char *string);
 
 # define DECIMAL "0123456789"
 # define LHEX "0123456789abcdef"
 # define UHEX "0123456789ABCDEF"
+# define PTR_PREFIX "0x"
 
-int	print_integer(int n, unsigned int base_dec, char *base_str);
-int	print_pointer(void *ptr);
+# define FT_PRINTF_BUFSIZ 32
+
+typedef unsigned long long	t_ullong;
+
 int	print_ullong(t_ullong n, unsigned int base_dec, char *base_str);
+int	print_int(int n, unsigned int base_dec, char *base_str);
+int	print_ptr(void *ptr);
 
 #endif

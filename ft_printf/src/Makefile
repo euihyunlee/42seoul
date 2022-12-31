@@ -18,7 +18,7 @@ ARFLAGS = -rcs
 NAME = libftprintf.a
 
 sources = \
-ft_printf.c     convert_specification.c     print_text.c    print_integer.c
+ft_printf.c     convert_specification.c     print_text.c    print_num.c \
 
 objects = $(sources:.c=.o)
 
