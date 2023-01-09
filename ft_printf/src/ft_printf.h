@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "./libft/libft.h"
+
 # define STDOUT 1
 
 int	ft_printf(const char *fstring, ...);

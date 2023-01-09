@@ -15,6 +15,9 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = -rcs
 
+LIBFT_DIR = ./libft
+LIBFT = libft.a
+
 NAME = libftprintf.a
 
 sources = \
@@ -26,6 +29,8 @@ objects = $(sources:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(objects)
+	${MAKE} -C ${LIBFT_DIR} all
+	cp ${LIBFT_DIR}/${LIBFT} ${NAME}
 	$(AR) $(ARFLAGS) $@ $^
 
 .PHONY : re
@@ -38,4 +43,5 @@ fclean : clean
 
 .PHONY : clean
 clean :
+	${MAKE} -C ${LIBFT_DIR} fclean
 	rm -f $(objects)
