@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 12:27:22 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/31 12:27:27 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/01/11 12:39:15 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,23 @@ int	print_ullong(t_ullong n, unsigned int base_dec, char *base_str)
 
 int	print_int(int n, unsigned int base_dec, char *base_str)
 {
-	int			printed;
-	int			written;
 	t_ullong	ullong;
+	int			printed;
+	int			expected;
 
 	printed = 0;
 	ullong = (t_ullong) n;
 	if (n < 0)
 	{
-		written = write(STDOUT, "-", 1);
-		if (written < 0)
-			return (written);
-		printed += written;
 		ullong = 0ULL - ullong;
+		if (write(STDOUT, "-", 1) < 0)
+			return (-1);
+		printed++;
 	}
-	written = print_ullong(ullong, base_dec, base_str);
-	if (written < 0)
-		return (written);
-	printed += written;
+	expected = print_ullong(ullong, base_dec, base_str);
+	if (expected < 0)
+		return (expected);
+	printed += expected;
 	return (printed);
 }
 
@@ -55,15 +54,15 @@ int	print_ptr(void *ptr)
 {
 	t_ullong	ullong;
 	int			printed;
-	int			written;
+	int			expected;
 
 	ullong = (t_ullong) ptr;
 	printed = write(STDOUT, PTR_PREFIX, ft_strlen(PTR_PREFIX));
 	if (printed < 0)
 		return (printed);
-	written = print_ullong(ullong, 16, LHEX);
-	if (written < 0)
-		return (written);
-	printed += written;
+	expected = print_ullong(ullong, 16, LHEX);
+	if (expected < 0)
+		return (expected);
+	printed += expected;
 	return (printed);
 }
