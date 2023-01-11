@@ -15,7 +15,7 @@
 int	ft_printf(const char *fstring, ...)
 {
 	va_list	ap;
-	int		written;
+	int		converted;
 	int		printed;
 
 	va_start(ap, fstring);
@@ -24,17 +24,16 @@ int	ft_printf(const char *fstring, ...)
 	{
 		if (*fstring != '%')
 		{
-			written = write(STDOUT, fstring++, 1);
-			if (written < 0)
-				return (written);
-			printed += written;
+			if (write(STDOUT, fstring++, 1) < 0)
+				return (-1);
+			printed++;
 			continue ;
 		}
 		fstring++;
-		written = convert_specification(fstring++, ap);
-		if (written < 0)
-			return (written);
-		printed += written;
+		converted = convert_specification(fstring++, ap);
+		if (converted < 0)
+			return (converted);
+		printed += converted;
 	}
 	va_end(ap);
 	return (printed);
