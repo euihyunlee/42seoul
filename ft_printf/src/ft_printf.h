@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:00:24 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/29 19:00:47 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:26:19 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 # define STDOUT 1
 
-int	ft_printf(const char *fstring, ...);
+int	ft_printf(const char *format, ...);
 
-int	convert_specification(const char *fstring, va_list ap);
+int	convert_specification(const char *format, va_list ap);
 
 # define NULL_MSG "(null)"
 
