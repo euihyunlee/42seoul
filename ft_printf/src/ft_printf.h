@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:00:24 by euihlee           #+#    #+#             */
-/*   Updated: 2023/01/18 13:26:19 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/07 16:29:50 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,7 @@
 
 # define STDOUT 1
 
-int	ft_printf(const char *format, ...);
-
-int	convert_specification(const char *format, va_list ap);
-
 # define NULL_MSG "(null)"
-
-int	print_char(char c);
-int	print_str(char *string);
 
 # define DECIMAL "0123456789"
 # define LHEX "0123456789abcdef"
@@ -39,6 +32,11 @@ int	print_str(char *string);
 
 typedef unsigned long long	t_ullong;
 
+int	ft_printf(const char *format, ...);
+int	convert_specification(const char *format, va_list ap);
+
+int	print_char(char c);
+int	print_str(char *string);
 int	print_ullong(t_ullong n, unsigned int base_dec, char *base_str);
 int	print_int(int n, unsigned int base_dec, char *base_str);
 int	print_ptr(void *ptr);

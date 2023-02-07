@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2022/12/29 19:19:13 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/07 16:30:42 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT = libft.a
 NAME = libftprintf.a
 
 sources = \
-ft_printf.c     convert_specification.c     print_text.c    print_num.c \
+ft_printf.c     ft_printf_utils.c \
 
 objects = $(sources:.c=.o)
 

@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_num.c                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/31 12:27:22 by euihlee           #+#    #+#             */
-/*   Updated: 2022/12/31 12:27:27 by euihlee          ###   ########.fr       */
+/*   Created: 2023/02/07 16:27:49 by euihlee           #+#    #+#             */
+/*   Updated: 2023/02/07 16:28:13 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	print_char(char c)
+{
+	return (write(STDOUT, &c, 1));
+}
+
+int	print_str(char *str)
+{
+	if (str == NULL)
+		return (write(STDOUT, NULL_MSG, ft_strlen(NULL_MSG)));
+	return (write(STDOUT, str, ft_strlen(str)));
+}
 
 int	print_ullong(t_ullong n, unsigned int base_dec, char *base_str)
 {
