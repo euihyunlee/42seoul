@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:11:44 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/08 14:40:23 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/08 16:12:23 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-
-# include "printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
 
 typedef struct s_list
 {

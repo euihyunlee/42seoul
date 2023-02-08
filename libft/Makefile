@@ -6,18 +6,21 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2023/02/08 14:39:41 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/08 16:14:58 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libft.a
+
+inc_dirs = include
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I .
+CFLAGS = -Wall -Wextra -Werror -I$(inc_dirs)
+
 AR = ar
 ARFLAGS = -rcs
 
-NAME = libft.a
-
-VPATH = mandatory:bonus:printf:get_next_line:add
+VPATH = $(shell find src -type d | tr '\n' ':')
 
 sources = \
 ft_isalpha.c    ft_isdigit.c    ft_isalnum.c    ft_isascii.c    ft_isprint.c \
@@ -34,11 +37,9 @@ ft_lstnew.c         ft_lstadd_front.c   ft_lstsize.c    ft_lstlast.c \
 ft_lstadd_back.c    ft_lstdelone.c      ft_lstclear.c   ft_lstiter.c \
 ft_lstmap.c \
 \
-ft_printf.c         ft_printf_utils.c \
+ft_printf.c         ft_printf_utils.c   get_next_line.c get_next_line_utils.c \
 \
-get_next_line.c     get_next_line_utils.c \
-\
-ft_isdecimal.c
+ft_isdecimal.c      dllist.c
 
 objects = $(sources:.c=.o)
 
