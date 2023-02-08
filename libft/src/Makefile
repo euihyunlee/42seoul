@@ -6,16 +6,18 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2023/02/07 16:52:56 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/08 14:39:41 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I .
 AR = ar
 ARFLAGS = -rcs
 
 NAME = libft.a
+
+VPATH = mandatory:bonus:printf:get_next_line:add
 
 sources = \
 ft_isalpha.c    ft_isdigit.c    ft_isalnum.c    ft_isascii.c    ft_isprint.c \
@@ -28,31 +30,23 @@ ft_substr.c     ft_strjoin.c    ft_strtrim.c    ft_split.c \
 ft_itoa.c       ft_strmapi.c    ft_striteri.c   ft_putchar_fd.c \
 ft_putstr_fd.c  ft_putendl_fd.c ft_putnbr_fd.c \
 \
-ft_isdecimal.c
-
-bonuses = \
 ft_lstnew.c         ft_lstadd_front.c   ft_lstsize.c    ft_lstlast.c \
 ft_lstadd_back.c    ft_lstdelone.c      ft_lstclear.c   ft_lstiter.c \
-ft_lstmap.c
+ft_lstmap.c \
+\
+ft_printf.c         ft_printf_utils.c \
+\
+get_next_line.c     get_next_line_utils.c \
+\
+ft_isdecimal.c
 
-sources_objects = $(sources:.c=.o)
-bonuses_objects = $(bonuses:.c=.o)
-
-ifdef WITH_BONUS
-	objects = $(sources_objects) $(bonuses_objects)
-else
-	objects = $(sources_objects)
-endif
+objects = $(sources:.c=.o)
 
 .PHONY : all
 all : $(NAME)
 
 $(NAME) : $(objects)
 	$(AR) $(ARFLAGS) $@ $^
-
-.PHONY : bonus
-bonus :
-	$(MAKE) WITH_BONUS=1 all
 
 .PHONY : re
 re: fclean
@@ -64,4 +58,4 @@ fclean : clean
 
 .PHONY : clean
 clean :
-	rm -f $(sources_objects) $(bonuses_objects)
+	rm -f $(objects)
