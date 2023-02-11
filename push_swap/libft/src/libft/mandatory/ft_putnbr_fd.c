@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/26 15:55:43 by euihlee           #+#    #+#             */
+/*   Updated: 2022/11/28 12:09:17 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+static void	write_digits(unsigned int n, int fd);
+
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	unsigned int	un;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
+	un = (unsigned int) n;
+	if (n < 0)
 	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
+		un = 0u - un;
+		write(fd, "-", 1);
 	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	write_digits(un, fd);
+}
+
+static void	write_digits(unsigned int n, int fd)
+{
+	char	digit;
+
+	digit = (n % 10) + '0';
+	if (n < 10)
+	{
+		write(fd, &digit, 1);
+		return ;
+	}
+	write_digits(n / 10, fd);
+	write(fd, &digit, 1);
 }

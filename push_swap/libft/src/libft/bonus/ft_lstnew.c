@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/26 16:41:34 by euihlee           #+#    #+#             */
+/*   Updated: 2022/11/26 16:44:45 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	t_list	*new;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
-	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
-	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	new = malloc(sizeof(*new));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/21 17:56:43 by euihlee           #+#    #+#             */
+/*   Updated: 2022/11/21 17:58:38 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	size_t	srclen;
+	size_t	dstlen;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
+	srclen = ft_strlen(src);
+	dstlen = 0;
+	while (*dst && dstlen < dstsize)
 	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
+		dst++;
+		dstlen++;
 	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	dstsize -= dstlen;
+	if (dstsize == 0)
+		return (dstlen + srclen);
+	while (*src && dstsize-- > 1)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (dstlen + srclen);
 }

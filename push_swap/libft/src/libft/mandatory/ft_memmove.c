@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/23 16:50:02 by euihlee           #+#    #+#             */
+/*   Updated: 2022/11/23 20:42:46 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	unsigned char	*dstcpy;
+	unsigned char	*srccpy;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
+	if (len == 0 || dst == src)
+		return (dst);
+	dstcpy = (unsigned char *) dst;
+	srccpy = (unsigned char *) src;
+	if (srccpy < dstcpy)
 	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
+		while (len-- > 0)
+			dstcpy[len] = srccpy[len];
+		return (dst);
 	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	while (len-- > 0)
+		*dstcpy++ = *srccpy++;
+	return (dst);
 }

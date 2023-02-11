@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2023/01/30 16:33:15 by euihlee           #+#    #+#             */
+/*   Updated: 2023/02/11 15:40:04 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
-{
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+# include <stdlib.h>
+# include <unistd.h>
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
-	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
-	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
-}
+# include "libft.h"
+# include "dllist.h"
+
+# define ERROR_MSG "Error"
+# define NO_PARAMS (1)
+# define MEM_ERROR (1)
+# define INVALID_ARGS (1)
+
+int		push_swap(t_dllist *a, t_dllist *b);
+int		push_args(t_dllist *list, char *str);
+
+#endif

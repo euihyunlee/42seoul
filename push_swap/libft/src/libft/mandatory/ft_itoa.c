@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/26 14:27:02 by euihlee           #+#    #+#             */
+/*   Updated: 2022/12/27 16:43:38 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+#define MAX_DIGITS 22
+
+char	*ft_itoa(int n)
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	char			buffer[MAX_DIGITS];
+	char			*ptr;
+	unsigned int	un;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
+	ptr = buffer + MAX_DIGITS - 1;
+	*ptr = '\0';
+	if (n == 0)
 	{
-		if (push_args(&a, *argv))
-		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
-		}
+		*--ptr = '0';
+		return (ft_strdup(ptr));
 	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	un = (unsigned int) n;
+	if (n < 0)
+		un = 0u - un;
+	while (un != 0)
+	{
+		*--ptr = (un % 10) + '0';
+		un /= 10;
+	}
+	if (n < 0)
+		*--ptr = '-';
+	return (ft_strdup(ptr));
 }

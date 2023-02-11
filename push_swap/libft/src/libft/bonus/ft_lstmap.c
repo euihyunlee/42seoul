@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:14:43 by euihlee          ###   ########.fr       */
+/*   Created: 2022/11/26 17:30:30 by euihlee           #+#    #+#             */
+/*   Updated: 2022/11/26 19:31:03 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_dllist	a;
-	t_dllist	b;
-	int			ops;
+	t_list	*flst;
+	void	*fcontent;
+	t_list	*new;
 
-	if (argc < 2)
-		return (NO_PARAMS);
-	dllist_clear(&a);
-	while (*++argv)
+	flst = NULL;
+	while (lst)
 	{
-		if (push_args(&a, *argv))
+		fcontent = f(lst->content);
+		new = ft_lstnew(fcontent);
+		if (new == NULL)
 		{
-			dllist_clear(&a);
-			return (INVALID_ARGS);
+			del(fcontent);
+			ft_lstclear(&flst, del);
+			return (NULL);
 		}
+		ft_lstadd_back(&flst, new);
+		lst = lst->next;
 	}
-	dllist_clear(&b);
-	ops = push_swap(&a, &b);
-	dllist_clear(&a);
-	dllist_clear(&b);
-	return (ops);
+	return (flst);
 }
