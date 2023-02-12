@@ -6,21 +6,26 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:33:11 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:02:05 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/12 13:56:42 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dllist.h"
 
-t_dllist	*dllist_init(void)
+void		dllist_init_static(t_dllist *list)
+{
+	list->head = NULL;
+	list->tail = NULL;
+}
+
+t_dllist	*dllist_init_dynamic(void)
 {
 	t_dllist	*list;
 
 	list = malloc(sizeof(*list));
 	if (!list)
 		return (NULL);
-	list->head = NULL;
-	list->tail = NULL;
+	dllist_init_static(list);
 	return (list);
 }
 
@@ -49,8 +54,7 @@ void	dllist_clear(t_dllist *list)
 		free(trav);
 		trav = tmp;
 	}
-	list->head = NULL;
-	list->tail = NULL;
+	dllist_init_static(list);
 }
 
 void	dllist_free(t_dllist *list)

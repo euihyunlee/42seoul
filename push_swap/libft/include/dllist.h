@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:19:34 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 22:08:56 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/12 13:57:33 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct s_dllist
 	t_dlnode	*tail;
 }				t_dllist;
 
-t_dllist	*dllist_init(void);
+void		dllist_init_static(t_dllist *list);
+t_dllist	*dllist_init_dynamic(void);
 t_dlnode	*dlnode_init(int n);
 void		dllist_clear(t_dllist *list);
 void		dllist_free(t_dllist *list);

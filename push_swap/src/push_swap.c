@@ -6,44 +6,63 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:46:04 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/11 21:42:42 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/12 13:41:43 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(t_dllist *a, t_dllist *b)
+int	push_swap(t_dllist *a, t_dllist *b, int size)
 {
 	(void) a;
 	(void) b;
+	(void) size;
 	return (0);
 }
 
 int	push_args(t_dllist *list, char *str)
 {
+	int			count;
 	long		l;
 	char		*endptr;
 	t_dlnode	*node;
 
+	count = 0;
 	while (*str)
 	{
 		l = ft_strtol(str, &endptr, 10);
 		if (endptr == str)
 		{
-			while (ft_isspace(*endptr))
-				endptr++;
-			if (*endptr)
+			if (!valid_trail(endptr))
 				return (INVALID_ARGS);
-			return (0);
+			return (count);
 		}
-		if ((*endptr && !ft_isspace(*endptr))
-			|| l < INT_MIN || INT_MAX < l || dllist_lookup((int) l, list))
+		if (!valid_arg(endptr, l) || dllist_lookup((int) l, list))
 			return (INVALID_ARGS);
 		node = dlnode_init((int) l);
 		if (!node)
 			return (MEM_ERROR);
 		dllist_insert_back(list, node);
+		count++;
 		str = endptr;
 	}
-	return (0);
+	return (count);
+}
+
+t_bool	valid_trail(char *endptr)
+{
+	while (ft_isspace(*endptr))
+		endptr++;
+	if (*endptr)
+		return (0);
+	return (!0);
+}
+
+t_bool	valid_arg(char *endptr, long l)
+{
+	if (*endptr && !ft_isspace(*endptr))
+		return (0);
+	if (l < INT_MIN || INT_MAX < l)
+		return (0);
+	return (!0);
 }
