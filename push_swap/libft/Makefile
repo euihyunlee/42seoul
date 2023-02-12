@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/26 21:32:38 by euihlee           #+#    #+#              #
-#    Updated: 2023/02/11 22:18:01 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/12 15:04:15 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ ft_lstmap.c \
 \
 ft_strtol.c     ft_strtol_utils.c   ft_isspace.c \
 ft_printf.c     ft_printf_utils.c   get_next_line.c get_next_line_utils.c \
-dllist.c        dllist_utils.c
+dllist.c        dllist_operations.c
 
 objects = $(sources:.c=.o)
 

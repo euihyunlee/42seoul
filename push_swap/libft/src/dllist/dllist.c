@@ -6,13 +6,13 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:33:11 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/12 13:56:42 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/12 15:12:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dllist.h"
 
-void		dllist_init_static(t_dllist *list)
+void	dllist_init_static(t_dllist *list)
 {
 	list->head = NULL;
 	list->tail = NULL;

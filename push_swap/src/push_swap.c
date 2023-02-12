@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:46:04 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/12 13:41:43 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/12 15:06:00 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	push_args(t_dllist *list, char *str)
 				return (INVALID_ARGS);
 			return (count);
 		}
-		if (!valid_arg(endptr, l) || dllist_lookup((int) l, list))
+		if (!valid_arg(endptr, l) || dllist_search((int) l, list))
 			return (INVALID_ARGS);
 		node = dlnode_init((int) l);
 		if (!node)
 			return (MEM_ERROR);
-		dllist_insert_back(list, node);
+		dllist_push_back(list, node);
 		count++;
 		str = endptr;
 	}
