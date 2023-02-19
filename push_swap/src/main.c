@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 04:24:15 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 10:03:32 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 		size += pushed;
 	}
 	dllist_init_static(&b);
-	push_swap(&a, &b, size, 0);
+	push_swap(&a, &b, size);
 	print_list(&a);
 	print_list(&b);
 	dllist_clear(&a);
