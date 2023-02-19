@@ -6,52 +6,46 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:46:04 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 09:45:32 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 11:06:28 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_dllist *a, t_dllist *b, int size, t_bool rev)
+static void	merge(t_dllist *a, t_dllist *b, int left, int right)
 {
-	t_bool	order;
+	while (left && right)
+	{
+		if (b->head->n < a->tail->n)
+		{
+			reverse_rotate(a, 1);
+			left--;
+			continue ;
+		}
+		push(b, a, 1);
+		right--;
+	}
+	push(b, a, right);
+	reverse_rotate(a, left);
+}
+
+void	push_swap(t_dllist *a, t_dllist *b, int size)
+{
 	int		left;
 	int		right;
 
 	if (size < 2)
 		return ;
-	if (size == 2)
+	if (size == 2 && (a->head->n > a->head->next->n))
 	{
-		order = a->head->n < a->head->next->n;
-		if ((rev && order) || (!rev && !order))
-			swap(a);
+		swap(a);
 		return ;
 	}
 	left = size / 2;
 	right = size - left;
-	push_swap(a, b, left, rev);
+	push_swap(a, b, left);
 	rotate(a, left);
-	push_swap(a, b, right, rev);
+	push_swap(a, b, right);
 	push(a, b, right);
-	while (left && right)
-	{
-		order = b->head->n > a->tail->n;
-		if ((rev && order) || (!rev && !order))
-		{
-			reverse_rotate(a, 1);
-			left--;
-		}
-		else
-		{
-			right--;
-			push(b, a, 1);
-		}
-	}
-	if (right)
-	{
-		push(b, a, right);
-		return ;
-	}
-	while (left-- > 0)
-		reverse_rotate(a, 1);
+	merge(a, b, left, right);
 }

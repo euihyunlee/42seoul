@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:33:15 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 03:56:25 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 11:01:43 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int		reverse_rotate(t_dllist *list, int count);
 
 int		push_args(t_dllist *list, char *str);
 
-void	push_swap(t_dllist *a, t_dllist *b, int size, t_bool rev);
+void	push_swap(t_dllist *a, t_dllist *b, int size);
 
 #endif
