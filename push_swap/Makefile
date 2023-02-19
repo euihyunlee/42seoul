@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 16:19:40 by euihlee           #+#    #+#              #
-#    Updated: 2023/02/18 17:08:08 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/19 09:46:40 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ debug :
 .PHONY : re
 re: fclean
 	$(MAKE) all
+	$(MAKE) clean
 
 .PHONY : fclean
 fclean : clean

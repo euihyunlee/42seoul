@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:46:04 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 09:40:16 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 09:45:32 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,23 @@ void	push_swap(t_dllist *a, t_dllist *b, int size, t_bool rev)
 	}
 	left = size / 2;
 	right = size - left;
-	push_swap(a, b, left, !rev);
-	push(a, b, left);
-	rotate(b, left);
+	push_swap(a, b, left, rev);
+	rotate(a, left);
 	push_swap(a, b, right, rev);
 	push(a, b, right);
 	while (left && right)
 	{
-		order = b->head->n > b->tail->n;
+		order = b->head->n > a->tail->n;
 		if ((rev && order) || (!rev && !order))
 		{
-			reverse_rotate(b, 1);
+			reverse_rotate(a, 1);
 			left--;
 		}
 		else
+		{
 			right--;
-		push(b, a, 1);
+			push(b, a, 1);
+		}
 	}
 	if (right)
 	{
@@ -52,8 +53,5 @@ void	push_swap(t_dllist *a, t_dllist *b, int size, t_bool rev)
 		return ;
 	}
 	while (left-- > 0)
-	{
-		reverse_rotate(b, 1);
-		push(b, a, 1);
-	}
+		reverse_rotate(a, 1);
 }
