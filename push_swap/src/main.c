@@ -6,11 +6,25 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/12 13:54:51 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 04:24:15 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+#include <stdio.h>
+
+void print_list(t_dllist *list)
+{
+	t_dlnode	*trav;
+
+	trav = list->head;
+	while (trav)
+	{
+		printf("%d\n", trav->n);
+		trav = trav->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,7 +32,6 @@ int	main(int argc, char **argv)
 	t_dllist	b;
 	int			pushed;
 	int			size;
-	int			ops;
 
 	if (argc < 2)
 		return (NO_PARAMS);
@@ -36,7 +49,9 @@ int	main(int argc, char **argv)
 		size += pushed;
 	}
 	dllist_init_static(&b);
-	ops = push_swap(&a, &b, size);
+	push_swap(&a, &b, size, 0);
+	print_list(&a);
+	print_list(&b);
 	dllist_clear(&a);
-	return (ops);
+	return (0);
 }

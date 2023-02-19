@@ -6,63 +6,54 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:46:04 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/12 15:06:00 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/19 09:40:16 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap(t_dllist *a, t_dllist *b, int size)
+void	push_swap(t_dllist *a, t_dllist *b, int size, t_bool rev)
 {
-	(void) a;
-	(void) b;
-	(void) size;
-	return (0);
-}
+	t_bool	order;
+	int		left;
+	int		right;
 
-int	push_args(t_dllist *list, char *str)
-{
-	int			count;
-	long		l;
-	char		*endptr;
-	t_dlnode	*node;
-
-	count = 0;
-	while (*str)
+	if (size < 2)
+		return ;
+	if (size == 2)
 	{
-		l = ft_strtol(str, &endptr, 10);
-		if (endptr == str)
-		{
-			if (!valid_trail(endptr))
-				return (INVALID_ARGS);
-			return (count);
-		}
-		if (!valid_arg(endptr, l) || dllist_search((int) l, list))
-			return (INVALID_ARGS);
-		node = dlnode_init((int) l);
-		if (!node)
-			return (MEM_ERROR);
-		dllist_push_back(list, node);
-		count++;
-		str = endptr;
+		order = a->head->n < a->head->next->n;
+		if ((rev && order) || (!rev && !order))
+			swap(a);
+		return ;
 	}
-	return (count);
-}
-
-t_bool	valid_trail(char *endptr)
-{
-	while (ft_isspace(*endptr))
-		endptr++;
-	if (*endptr)
-		return (0);
-	return (!0);
-}
-
-t_bool	valid_arg(char *endptr, long l)
-{
-	if (*endptr && !ft_isspace(*endptr))
-		return (0);
-	if (l < INT_MIN || INT_MAX < l)
-		return (0);
-	return (!0);
+	left = size / 2;
+	right = size - left;
+	push_swap(a, b, left, !rev);
+	push(a, b, left);
+	rotate(b, left);
+	push_swap(a, b, right, rev);
+	push(a, b, right);
+	while (left && right)
+	{
+		order = b->head->n > b->tail->n;
+		if ((rev && order) || (!rev && !order))
+		{
+			reverse_rotate(b, 1);
+			left--;
+		}
+		else
+			right--;
+		push(b, a, 1);
+	}
+	if (right)
+	{
+		push(b, a, right);
+		return ;
+	}
+	while (left-- > 0)
+	{
+		reverse_rotate(b, 1);
+		push(b, a, 1);
+	}
 }

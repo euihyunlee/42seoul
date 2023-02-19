@@ -6,7 +6,7 @@
 #    By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 16:19:40 by euihlee           #+#    #+#              #
-#    Updated: 2023/02/11 15:58:12 by euihlee          ###   ########.fr        #
+#    Updated: 2023/02/18 17:08:08 by euihlee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS = -Wall -Wextra -Werror -L$(libft_dir) -lft \
 
 sources_dir = src/
 sources = \
-main.c  push_swap.c
+main.c      push_swap.c     push_args.c     instructions.c
 
 objects = $(sources:.c=.o)
 
