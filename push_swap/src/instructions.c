@@ -6,13 +6,13 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 22:23:39 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 03:57:36 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/28 05:35:20 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap(t_dllist *list)
+int	swap(char *str, t_dllist *list)
 {
 	t_dlnode	*first;
 	t_dlnode	*second;
@@ -27,11 +27,11 @@ int	swap(t_dllist *list)
 	tmp = first->n;
 	first->n = second->n;
 	second->n = tmp;
-	ft_printf("swap\n");
+	ft_printf("%s", str);
 	return (1);
 }
 
-int	push(t_dllist *a, t_dllist *b, int count)
+int	push(char *str, t_dllist *a, t_dllist *b, int count)
 {
 	int			i;
 	t_dlnode	*node;
@@ -43,13 +43,13 @@ int	push(t_dllist *a, t_dllist *b, int count)
 		if (!node)
 			break ;
 		dllist_push_front(b, node);
-		ft_printf("push\n");
+		ft_printf("%s", str);
 		i++;
 	}
 	return (i);
 }
 
-int	rotate(t_dllist *list, int count)
+int	rotate(char *str, t_dllist *list, int count)
 {
 	int			i;
 	t_dlnode	*node;
@@ -61,13 +61,13 @@ int	rotate(t_dllist *list, int count)
 		if (!node)
 			break ;
 		dllist_push_back(list, node);
-		ft_printf("rotate\n");
+		ft_printf("%s", str);
 		i++;
 	}
 	return (i);
 }
 
-int	reverse_rotate(t_dllist *list, int count)
+int	reverse_rotate(char *str, t_dllist *list, int count)
 {
 	int			i;
 	t_dlnode	*node;
@@ -79,7 +79,7 @@ int	reverse_rotate(t_dllist *list, int count)
 		if (!node)
 			break ;
 		dllist_push_front(list, node);
-		ft_printf("reverse rotate\n");
+		ft_printf("%s", str);
 		i++;
 	}
 	return (i);

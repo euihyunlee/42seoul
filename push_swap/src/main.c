@@ -6,25 +6,25 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:45:07 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/19 11:01:57 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/28 06:25:48 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-#include <stdio.h>
-
-void print_list(t_dllist *list)
-{
-	t_dlnode	*trav;
-
-	trav = list->head;
-	while (trav)
-	{
-		printf("%d\n", trav->n);
-		trav = trav->next;
-	}
-}
+// TODO: remove print_list function
+//#include <stdio.h>
+//void	print_list(t_dllist *list)
+//{
+//	t_dlnode	*trav;
+//
+//	trav = list->head;
+//	while (trav)
+//	{
+//		printf("%d\n", trav->n);
+//		trav = trav->next;
+//	}
+//}
 
 int	main(int argc, char **argv)
 {
@@ -34,9 +34,8 @@ int	main(int argc, char **argv)
 	int			size;
 
 	if (argc < 2)
-		return (NO_PARAMS);
+		return (EXIT_FAILURE);
 	dllist_init_static(&a);
-	pushed = 0;
 	size = 0;
 	while (*++argv)
 	{
@@ -44,14 +43,15 @@ int	main(int argc, char **argv)
 		if (pushed < 0)
 		{
 			dllist_clear(&a);
-			return (INVALID_ARGS);
+			return (EXIT_FAILURE);
 		}
 		size += pushed;
 	}
 	dllist_init_static(&b);
+	// TODO: hard code for sizes less than 5
+//	if (size <= 5)
+//		push_swap_small(&a, &b, size);
+//	else
 	push_swap(&a, &b, size);
-	print_list(&a);
-	print_list(&b);
 	dllist_clear(&a);
-	return (0);
 }

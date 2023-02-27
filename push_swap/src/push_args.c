@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:01:50 by euihlee           #+#    #+#             */
-/*   Updated: 2023/02/18 17:01:51 by euihlee          ###   ########.fr       */
+/*   Updated: 2023/02/28 06:22:58 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static t_bool	valid_trail(char *endptr)
 	while (ft_isspace(*endptr))
 		endptr++;
 	if (*endptr)
-		return (0);
-	return (!0);
+		return (FALSE);
+	return (TRUE);
 }
 
 static t_bool	valid_arg(char *endptr, long l)
 {
 	if (*endptr && !ft_isspace(*endptr))
-		return (0);
+		return (FALSE);
 	if (l < INT_MIN || INT_MAX < l)
-		return (0);
-	return (!0);
+		return (FALSE);
+	return (TRUE);
 }
 
 int	push_args(t_dllist *list, char *str)
